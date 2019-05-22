@@ -16,9 +16,9 @@ class Oficinista extends Model
     	return $this->belongsTo('App\PuntoDeAtencion', 'punto_de_atencion_id');
     }
 
-    public function getIdTurno(){
-    		return $this->belongsTo('App\Turno', 'turno_id');
-    }
+   	public function puesto(){
+       return $this->hasOne('App\Puesto','puesto_id');
+   	}
 
 
     /* $table->string('punto_de_atencion_id');*/

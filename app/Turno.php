@@ -24,9 +24,7 @@ class Turno extends Model
         return $this->hasOne('App\Puesto','puesto_id');
     }
 
-    public function oficinista(){
-        return $this->hasOne('App\Oficinista','oficinista_id');
-    }
+    
 /*
     $table->integer('puesto_id');
     $table->integer('oficinista_id');

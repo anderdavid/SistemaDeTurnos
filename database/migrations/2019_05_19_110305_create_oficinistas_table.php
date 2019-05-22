@@ -20,7 +20,7 @@ class CreateOficinistasTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('punto_de_atencion_id');
-            $table->string('turno_id');
+            $table->string('puesto_id');
             $table->timestamps();
         });
     }
