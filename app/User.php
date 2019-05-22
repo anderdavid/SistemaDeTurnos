@@ -10,6 +10,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $table="usuarios";
+
     /**
      * The attributes that are mass assignable.
      *
@@ -74,5 +76,11 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public function getIdPuntoDeAtencion(){
+            return $this->belongsTo('App\PuntoDeAtencion', 'punto_de_atencion_id');
+    }
+
+    /* $table->string('punto_de_atencion_id');*/
     
 }

@@ -19,7 +19,7 @@ class CreatePuntoDeAtencionsTable extends Migration
             $table->string('nit_empresa');
             $table->string('nombre');
             $table->string('actividad');
-            $table->integer('administrador_id'); //ajustar con las relaciones
+            $table->integer('user_id'); //ajustar con las relaciones
             $table->timestamps();
         });
     }
