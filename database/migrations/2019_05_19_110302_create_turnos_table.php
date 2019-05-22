@@ -20,11 +20,17 @@ class CreateTurnosTable extends Migration
             $table->string('clase'); //prefijo
             $table->string('numero');
             $table->string('status');
-            $table->integer('cliente_id');
+            //$table->integer('cliente_id');
+            $table->unsignedBigInteger('cliente_id');
+            $table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');
+            
             $table->integer('puesto_id');
             $table->integer('oficinista_id');
             $table->string('punto_de_atencion_id');
             $table->timestamps();
+
+            /*$table->unsignedBigInteger('id_usuario');
+            $table->foreign('id_usuario')->references('id')->on('usuarios')->onDelete('cascade');*/
         });
     }
 

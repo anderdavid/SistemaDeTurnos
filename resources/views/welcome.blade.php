@@ -83,7 +83,10 @@
                 <div class="title m-b-md">
                     HELLO WORLD SISTEMA DE TURNOS
                 </div>
+                <a href="http://192.168.1.142:8000/takeTurn">Tomar turno</a>
             </div>
+
+             
         </div>
     </body>
 </html>

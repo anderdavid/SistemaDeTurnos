@@ -21,3 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/usuarios','HomeController@createUsers')->name('users');
 Route::get('/oficinas','HomeController@createOficinas')->name('oficinas');
 Route::get('/ambos','HomeController@ambos')->name('ambos');
+
+/****Tomar Turno***/
+Route::any('/takeTurn','TurnosController@takeTurn')->name('takeTurn');
+Route::any('turnos/store','TurnosController@store')->name('turnosStore');
