@@ -18,5 +18,5 @@ class Cliente extends Model
 }
 
  /* 
- 	$table->integer('punto_de_atencion_id');
+ 	$table->integer('punto_de_atencion_id'); //puntos_de_atencion
  */

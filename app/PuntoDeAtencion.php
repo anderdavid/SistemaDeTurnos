@@ -24,12 +24,14 @@ class PuntoDeAtencion extends Model
 		return $this->hasMany('App\Oficinista');
     }
 
-    public function User(){
-        return $this->hasOne('App\User','user_id');
+    public function getIdusuario(){
+            return $this->belongsTo('App\User', 'usuario_id');
     }
 
-   /* 
-        $table->integer('user_id');
+    /*
+     $table->integer('usuario_id');//usuarios
     */
+
+ 
 
 }

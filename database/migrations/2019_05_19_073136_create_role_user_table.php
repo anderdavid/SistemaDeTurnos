@@ -13,7 +13,7 @@ class CreateRoleUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('role_user', function (Blueprint $table) {
+        Schema::create('roles_usuarios', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('role_id')->unsigned();
             $table->integer('user_id')->unsigned();

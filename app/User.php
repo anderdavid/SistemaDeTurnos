@@ -77,12 +77,10 @@ class User extends Authenticatable
         return $this->belongsToMany("App\Role")->withTimestamps();
     }
 
-    public function getIdPuntoDeAtencion(){
-            return $this->belongsTo('App\PuntoDeAtencion', 'punto_de_atencion_id');
+    public function puntoDeAtencion(){
+        return $this->hasOne('App\PuntoDeAtencion');
     }
 
-    /*  
-        $table->integer('punto_de_atencion_id');
-    */
+   
     
 }

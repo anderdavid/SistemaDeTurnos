@@ -15,20 +15,21 @@ class Turno extends Model
     public function getIdOficinista(){
     		return $this->belongsTo('App\Oficinista', 'oficinista_id'); 
     }
+    public function getIdPuesto(){
+            return $this->belongsTo('App\Puesto', 'puesto_id');
+    }
 
     public function getIdPuntoDeAtencion(){
     		return $this->belongsTo('App\PuntoDeAtencion', 'punto_de_atencion_id');
     }
 
-    public function puesto(){
-        return $this->hasOne('App\Puesto','puesto_id');
-    }
+   
 
     
 /*
-    $table->integer('cliente_id')
-    $table->integer('puesto_id');
-    $table->integer('oficinista_id');
-    $table->integer('punto_de_atencion_id');
+    $table->integer('cliente_id'); //clientes
+    $table->integer('oficinista_id');  //oficinistas
+    $table->integer('puesto_id');//puestos
+    $table->integer('punto_de_atencion_id'); //puntos_de_atencion
 */
 }
