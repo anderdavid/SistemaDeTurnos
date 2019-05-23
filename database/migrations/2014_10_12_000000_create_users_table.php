@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('cedula');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('punto_de_atencion_id');
+            $table->integer('punto_de_atencion_id');
             $table->rememberToken();
             $table->timestamps();
         });

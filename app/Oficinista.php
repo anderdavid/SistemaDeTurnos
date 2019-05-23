@@ -12,7 +12,7 @@ class Oficinista extends Model
        return $this->hasMany('App\Turno');
     }
 
-	public function getIdPuntoDeAtencion(){
+	  public function getIdPuntoDeAtencion(){
     	return $this->belongsTo('App\PuntoDeAtencion', 'punto_de_atencion_id');
     }
 
@@ -21,5 +21,8 @@ class Oficinista extends Model
    	}
 
 
-    /* $table->string('punto_de_atencion_id');*/
+    /* 
+       $table->integer('punto_de_atencion_id');
+       $table->integer('puesto_id');
+|    */
 }

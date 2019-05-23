@@ -26,7 +26,9 @@ class Turno extends Model
 
     
 /*
+    $table->integer('cliente_id')
     $table->integer('puesto_id');
     $table->integer('oficinista_id');
-    $table->string('punto_de_atencion_id');*/
+    $table->integer('punto_de_atencion_id');
+*/
 }

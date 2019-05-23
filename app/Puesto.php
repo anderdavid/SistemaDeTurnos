@@ -20,7 +20,9 @@ class Puesto extends Model
    		return $this->belongsTo('App\Oficinista', 'puesto_id');
    }
 
- /*   $table->string('punto_de_atencion_id');
-	  $table->string('puesto_id');
+ /* 
+   $table->integer('punto_de_atencion_id');
+   $table->integer('turno_id');
+   $table->integer('turno_id');
  */
 }

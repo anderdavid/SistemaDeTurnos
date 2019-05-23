@@ -17,11 +17,17 @@ class CreatePuestosTable extends Migration
             $table->bigIncrements('id');
             $table->string('numero');
             $table->string('descripcion');
-            $table->string('punto_de_atencion_id');
-            $table->string('turno_id');
-            $table->string('puesto_id');
+            $table->integer('punto_de_atencion_id');
+            $table->integer('turno_id');
+            $table->integer('turno_id');
             $table->timestamps();
         });
+
+/* 
+   $table->integer('punto_de_atencion_id');
+   $table->integer('turno_id');
+   $table->integer('turno_id');
+ */
     }
 
     /**

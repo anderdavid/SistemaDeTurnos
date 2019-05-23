@@ -39,12 +39,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-   
-    public function roles(){
-
-        return $this->belongsToMany("App\Role")->withTimestamps();
-    }
-
     public function authorizeRoles($roles){
         
         if ($this->hasAnyRole($roles)) {
@@ -77,10 +71,18 @@ class User extends Authenticatable
         return false;
     }
 
+    
+    public function roles(){
+
+        return $this->belongsToMany("App\Role")->withTimestamps();
+    }
+
     public function getIdPuntoDeAtencion(){
             return $this->belongsTo('App\PuntoDeAtencion', 'punto_de_atencion_id');
     }
 
-    /* $table->string('punto_de_atencion_id');*/
+    /*  
+        $table->integer('punto_de_atencion_id');
+    */
     
 }

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PuntoDeAtencion extends Model
 {
+    protected $table="puntos_de_atencion";
+    
     public function clientes(){
 		return $this->hasMany('App\Cliente');
     }
@@ -22,8 +24,12 @@ class PuntoDeAtencion extends Model
 		return $this->hasMany('App\Oficinista');
     }
 
-    public function usuario(){
-        return $this->hasOne('App\Phone','user_id');
+    public function User(){
+        return $this->hasOne('App\User','user_id');
     }
+
+   /* 
+        $table->integer('user_id');
+    */
 
 }

@@ -19,8 +19,8 @@ class CreateOficinistasTable extends Migration
             $table->string('cedula');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('punto_de_atencion_id');
-            $table->string('puesto_id');
+            $table->integer('punto_de_atencion_id');
+            $table->integer('puesto_id');
             $table->timestamps();
         });
     }

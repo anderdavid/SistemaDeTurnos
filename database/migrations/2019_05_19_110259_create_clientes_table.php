@@ -17,7 +17,7 @@ class CreateClientesTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string('cedula');
-            $table->string('punto_de_atencion_id');
+            $table->integer('punto_de_atencion_id');
             $table->timestamps();
         });
     }
