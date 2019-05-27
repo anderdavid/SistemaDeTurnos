@@ -17,6 +17,7 @@ class CreateClientesTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string('cedula');
+            $table->string('asunto');
             
             $table->unsignedBigInteger('punto_de_atencion_id');                
             $table->foreign('punto_de_atencion_id')
