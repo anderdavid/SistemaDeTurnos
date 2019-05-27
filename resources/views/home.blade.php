@@ -16,6 +16,12 @@
 
                     You are logged in!
                 </div>
+
+                <div class="card-body">
+                    <a href="/create/puntosDeAtencion">Crear puntos de atencion</a><br>
+                    <a href="/create/oficinistas"> Crear Oficinas</a><br>
+                    <a href="/ambos">Abmos</a><br>
+                </div>
             </div>
         </div>
     </div>
