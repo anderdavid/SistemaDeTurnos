@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Sistema de Turnos
@@ -70,11 +70,17 @@
                     </ul>
                 </div>
             </div>
-        </nav>
-
-        <main class="py-4">
+         </nav>
+         <div>
+              @yield('nav-superadministrador')
+         </div>
+         <div style="background: #FAF7AA">
+             @yield('alert')
+         </div>
+         <main class="py-5">
             @yield('content')
         </main>
+       
     </div>
-</body>
+  </body>
 </html>

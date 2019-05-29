@@ -24,17 +24,17 @@ Route::get('/ambos','HomeController@ambos')->name('ambos');
 
 
 
-Route::get('/oficinas', 'OficinasController@index');
-Route::get('/oficinas/show', 'OficinasController@index');
+Route::get('/puntosAtencion', 'PuntosAtencionController@index');
+Route::get('/puntosAtencion/show', 'PuntosAtencionController@index');
 
-Route::get('/oficinas/create', 'OficinasController@create');
-Route::get('/oficinas/store', 'OficinasController@store');
+Route::get('/puntosAtencion/create', 'PuntosAtencionController@create');
+Route::post('/puntosAtencion/store', 'PuntosAtencionController@store');
 
-Route::get('/oficinas/show/{id}', 'OficinasController@show');
-Route::get('/oficinas/edit/{id}', 'OficinasController@edit');
-Route::get('/oficinas/update/{id}', 'OficinasController@update');
+Route::get('/puntosAtencion/show/{id}', 'PuntosAtencionController@show');
+Route::get('/puntosAtencion/edit/{id}', 'PuntosAtencionController@edit');
+Route::get('/puntosAtencion/update/{id}', 'PuntosAtencionController@update');
 
-Route::get('/oficinas/destroy/{id}', 'OficinasController@destroy');
+Route::get('/puntosAtencion/destroy/{id}', 'PuntosAtencionController@destroy');
 
 
 

@@ -16,11 +16,11 @@ class CreatePuntoDeAtencionsTable extends Migration
     {
         Schema::create('puntos_de_atencion', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre')->unique();
+            $table->string('direccion');
+            $table->string('actividad');
             $table->string('nombre_empresa');
             $table->string('nit_empresa');
-            $table->string('nombre');
-            $table->string('actividad');
-            
             $table->unsignedBigInteger('usuario_id');                
             $table->foreign('usuario_id')
                   ->references('id')->on('users')
