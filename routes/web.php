@@ -32,6 +32,7 @@ Route::get('/puntosAtencion/update/{id}', 'PuntosAtencionController@update');
 Route::get('/puntosAtencion/destroy/{id}', 'PuntosAtencionController@destroy');
 
 Route::get('/administradores', 'AdministradorController@index');
+Route::get('/administradores/show/{id}', 'AdministradorController@show');
 
 
 

@@ -21,8 +21,8 @@ class CreatePuntoDeAtencionsTable extends Migration
             $table->string('actividad');
             $table->string('nombre_empresa');
             $table->string('nit_empresa');
-            $table->unsignedBigInteger('usuario_id');                
-            $table->foreign('usuario_id')
+            $table->unsignedBigInteger('user_id');                
+            $table->foreign('user_id')
                   ->references('id')->on('users')
                   ->onDelete('cascade');
             
@@ -30,7 +30,7 @@ class CreatePuntoDeAtencionsTable extends Migration
         });
     }
     /*
-     $table->integer('usuario_id');//usuarios
+      $table->integer('user_id');//usuarios
     */
 
 
@@ -44,3 +44,4 @@ class CreatePuntoDeAtencionsTable extends Migration
         Schema::dropIfExists('puntos_de_atencion');
     }
 }
+

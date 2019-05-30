@@ -95,7 +95,14 @@ class PuntosAtencionController extends Controller
      */
     public function show($id)
     {
-         return view('puntosAtencion/viewId', ['id'=>$id]);
+        $puntoAtencion = PuntoDeAtencion::find($id);
+        $administrador = PuntoDeAtencion::find($id)->getIdusuario;
+
+       /* print($puntoAtencion);
+        print($administrador);*/
+        
+         return view('puntosAtencion/viewId',
+            ['puntoAtencion'=>$puntoAtencion,'administrador'=>$administrador]);
     }
 
     /**

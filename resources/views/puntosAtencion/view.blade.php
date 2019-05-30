@@ -12,6 +12,7 @@
 				<th>actividad</th>
 				<th>Nombre Empresa</th>
 				<th>Nit Empresa</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -23,6 +24,13 @@
 				<td>{{$puntoAtencion->actividad}}</td>
 				<td>{{$puntoAtencion->nombre_empresa}}</td>
 				<td>{{$puntoAtencion->nit_empresa}}</td>
+				<td>
+					<ul>
+						<li><a href="/puntosAtencion/show/{{$puntoAtencion->id}}">Ver</a></li>
+						<li><a href="#">Editar</a></li>
+						<li><a href="#">Eliminar</a></li>
+					</ul>
+				</td>
 			</tr> 
 			@endforeach
 		</tbody>

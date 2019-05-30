@@ -11,6 +11,7 @@
 				<th>Email</th>
 				<th>Cedula</th>
 				<th>Password</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -21,6 +22,13 @@
 				<td>{{$administrador->email}}</td>
 				<td>{{$administrador->cedula}}</td>
 				<td>{{$administrador->password}}</td>
+				<td>
+					<ul>
+						<li><a href="/administradores/show/{{$administrador->id}}">Ver</a></li>
+						<li><a href="#">Editar</a></li>
+						<li><a href="#">Eliminar</a></li>
+					</ul>
+				</td>
 			</tr>
 			@endforeach	
 		</tbody>
@@ -28,9 +36,3 @@
 </div>
 @endsection
 
-<!-- $table->bigIncrements('id');
-$table->string('name');
-$table->string('email')->unique();
-$table->string('cedula')->nullable();
-$table->timestamp('email_verified_at')->nullable();
-$table->string('password'); -->

@@ -49,7 +49,13 @@ class AdministradorController extends Controller
      */
     public function show($id)
     {
-        //
+        $administrador = User::find($id);
+        $puntoAtencion = User::find($id)->puntoDeAtencion;
+
+        /*print($puntoAtencion);*/
+        /*print($administrador);*/
+        return view('puntosAtencion/viewId',
+            ['puntoAtencion'=>$puntoAtencion,'administrador'=>$administrador]);
     }
 
     /**

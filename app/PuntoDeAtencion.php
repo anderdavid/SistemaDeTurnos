@@ -25,11 +25,11 @@ class PuntoDeAtencion extends Model
     }
 
     public function getIdusuario(){
-            return $this->belongsTo('App\User', 'usuario_id');
+            return $this->belongsTo('App\User', 'user_id');
     }
 
     /*
-     $table->integer('usuario_id');//usuarios
+     $table->integer('user_id');//usuarios
     */
 
  
