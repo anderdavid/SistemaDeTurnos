@@ -24,6 +24,14 @@
 						<a class="dropdown-item" href="/puntosAtencion/create">Crear Puntos de Atencion</a>
 					</div>
 				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle active" href="#" id="navbardrop" data-toggle="dropdown">
+						Administradores
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item  navbar-dark" href="/administradores">Ver Administradores</a>
+					</div>
+				</li>
 			</ul>
 		</div>
 	</div>

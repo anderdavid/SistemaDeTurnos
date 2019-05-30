@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container">
-	<h1 class="text-secondary">Crear Puntos de Atencion</h1><br>
+	<h1 class="text-secondary">Ver Puntos de Atencion</h1><br>
 	<table class="table table-striped">
 		<thead>
 			<tr>
