@@ -24,7 +24,11 @@ class PuntosAtencionController extends Controller
      */
     public function index()
     {
-        return view('puntosAtencion/view');
+        $puntosAtencion = \App\PuntoDeAtencion::all();
+
+        return view('puntosAtencion/view', ['puntosAtencion' =>$puntosAtencion]);
+
+        //return view('puntosAtencion/view');
 
     }
 
