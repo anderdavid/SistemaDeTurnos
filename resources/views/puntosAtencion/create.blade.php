@@ -1,12 +1,12 @@
 @extends('layouts.nav-superadministrador')
-@section('alert')
-	@if(isset($msg))
-	<div class="alert alert-danger alert-dismissible">
-		<button type="button" class="close" data-dismiss="alert">&times;</button>
-		<strong>Error! </strong>{{$msg}}
-	</div>
-	@endif
-@endsection
+	@section('alert')
+		@if(isset($msg))
+		<div class="alert alert-danger alert-dismissible">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong>Error! </strong>{{$msg}}
+		</div>
+		@endif
+	@endsection
 @section('content')
 
 <div class="container">

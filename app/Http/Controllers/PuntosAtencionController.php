@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Redirect;
 use \App\PuntoDeAtencion;
 use \App\User;
@@ -54,10 +55,10 @@ class PuntosAtencionController extends Controller
         $valUsuario =User::where('email',$request->email)->first();
         $valPuntoAtencion =PuntoDeAtencion::where('nombre',$request->nombrePuntoAtencion)->first();
 
-        if(isset($valUsuario)){
+        if(isset($valUsuario)&&$valUsuario!=null){
             $msg="Email ya existe";
             return view('puntosAtencion/create',['msg'=>$msg]);
-        }else if(isset($valPuntoAtencion)){
+        }else if(isset($valPuntoAtencion)&&$valPuntoAtencion!=null){
             $msg="Nombre punto de atencion no valido";
             return view('puntosAtencion/create',['msg'=>$msg]);
         }else{
@@ -81,7 +82,7 @@ class PuntosAtencionController extends Controller
                 return redirect('puntosAtencion');
 
             }catch(\Illuminate\Database\QueryException $e) {
-                return view('puntosAtencion/create',['msg'=>'no se pudo crear punto de atencion']);
+                return view('puntosAtencion/create',['msg'=>'no se pudo crear punto de atencion ']);
             } 
         }
 
@@ -113,7 +114,11 @@ class PuntosAtencionController extends Controller
      */
     public function edit($id)
     {
-         return view('puntosAtencion/edit', ['id'=>$id]);
+         $puntoAtencion = PuntoDeAtencion::find($id);
+         $administrador = PuntoDeAtencion::find($id)->getIdusuario;
+
+         return view('puntosAtencion/edit',
+            ['puntoAtencion'=>$puntoAtencion,'administrador'=>$administrador]);
     }
 
     /**
@@ -125,7 +130,76 @@ class PuntosAtencionController extends Controller
      */
     public function update(Request $request, $id)
     {
-         return new Response('puntosAtencionController: update id:'.$id);
+        $puntoAtencion = PuntoDeAtencion::find($id);
+        $administrador = PuntoDeAtencion::find($id)->getIdusuario;
+        
+        $queryValAdministrador="SELECT *FROM users 
+                WHERE 
+                email ='".$request->email."' AND id !=".$administrador->id;
+
+        $valAdministrador = DB::select($queryValAdministrador,[1]);
+
+
+        $queryValPuntoAtencion="SELECT *FROM puntos_de_atencion
+                WHERE
+                nombre ='".$request->nombrePuntoAtencion."' AND id!=".$puntoAtencion->id;
+        $valPuntoAtencion=DB::select($queryValPuntoAtencion,[1]);
+        
+         /* print_r($valAdministrador);
+        echo $queryValAdministrador."<br>";
+
+        print_r($valPuntoAtencion);
+        echo $queryValPuntoAtencion."<br>";*/
+
+        if(isset($valAdministrador)&&$valAdministrador!=null){
+
+            print_r($valAdministrador);
+            $msg="Email no valido";
+
+            return view('puntosAtencion/edit',
+                ['puntoAtencion'=>$puntoAtencion,
+                    'administrador'=>$administrador,
+                    'msg'=>$msg
+                    ]);
+
+        }else if(isset($valPuntoAtencion)&&$valPuntoAtencion!=null){
+            print_r($valPuntoAtencion);
+            $msg="Nombre punto de atenccion no valido";
+
+            return view('puntosAtencion/edit',
+                ['puntoAtencion'=>$puntoAtencion,
+                    'administrador'=>$administrador,
+                    'msg'=>$msg
+                    ]);
+        }else{
+            try{
+
+                $administrador->name=$request->name;
+                $administrador->email=$request->email;
+                $administrador->cedula=$request->cedula;
+                $administrador->password=bcrypt($request->password);
+                $administrador->save();
+
+                $puntoAtencion->nombre=$request->nombrePuntoAtencion;
+                $puntoAtencion->direccion=$request->direccion;
+                $puntoAtencion->actividad=$request->actividad;
+                $puntoAtencion->nombre_empresa=$request->nombre_empresa;
+                $puntoAtencion->nit_empresa=$request->nit_empresa;
+
+                $puntoAtencion->getIdusuario()->associate($administrador);
+                $puntoAtencion->save();
+
+                return redirect('puntosAtencion');
+
+            }catch(\Illuminate\Database\QueryException $e) {
+                return view('puntosAtencion/create',['msg'=>'no se pudo actualizar punto de atencion ']);
+            } 
+        }
+
+        
+
+        //$superadministradores = DB::select('SELECT *FROM super_administradors', [1]);
+        //return new Response('puntosAtencionController: update id:'.$id);
     }
 
     /**

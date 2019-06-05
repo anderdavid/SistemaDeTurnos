@@ -27,7 +27,7 @@
 				<td>
 					<ul>
 						<li><a href="/puntosAtencion/show/{{$puntoAtencion->id}}">Ver</a></li>
-						<li><a href="#">Editar</a></li>
+						<li><a href="/puntosAtencion/edit/{{$puntoAtencion->id}}">Editar</a></li>
 						<li><a href="#">Eliminar</a></li>
 					</ul>
 				</td>

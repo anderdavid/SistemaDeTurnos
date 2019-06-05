@@ -28,7 +28,7 @@ Route::get('/puntosAtencion/create', 'PuntosAtencionController@create');
 Route::post('/puntosAtencion/store', 'PuntosAtencionController@store');
 Route::get('/puntosAtencion/show/{id}', 'PuntosAtencionController@show');
 Route::get('/puntosAtencion/edit/{id}', 'PuntosAtencionController@edit');
-Route::get('/puntosAtencion/update/{id}', 'PuntosAtencionController@update');
+Route::post('/puntosAtencion/update/{id}', 'PuntosAtencionController@update');
 Route::get('/puntosAtencion/destroy/{id}', 'PuntosAtencionController@destroy');
 
 Route::get('/administradores', 'AdministradorController@index');
