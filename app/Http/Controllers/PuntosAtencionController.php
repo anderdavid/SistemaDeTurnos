@@ -210,7 +210,9 @@ class PuntosAtencionController extends Controller
      */
     public function destroy($id)
     {
-         return new Response('puntosAtencionController: destroy id:'.$id);
+        $userId=\App\PuntoDeAtencion::find($id)->getIdusuario->id;
+        $deleteUser = \App\User::where('id',$userId)->delete();
+        return redirect('puntosAtencion');
     }
 }
 

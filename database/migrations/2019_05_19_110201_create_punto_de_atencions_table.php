@@ -27,6 +27,7 @@ class CreatePuntoDeAtencionsTable extends Migration
                   ->onDelete('cascade');
             
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
     /*
