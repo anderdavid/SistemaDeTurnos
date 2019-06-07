@@ -19,9 +19,7 @@
 		<input class="form-control" type="text" name="nombre" placeholder="Buscar por Nombre" />
 		<label for="empresa" style="margin-left: 5px"></label>
 		<input class="form-control" type="text" name="empresa" placeholder="Buscar por Empresa"/>
-		<!-- <button class="btn btn-success" style="margin-left: 10px">
-			<i class="icono-action fa fa-search" style="color:#fff; font-size:12px"></i>
-		</button> -->
+		
 		<button type="submit" class="btn btn-info" style="margin-left: 5px">
 			<span style="color:#fff">
 				<i class="icono-action fa fa-search" 
@@ -98,7 +96,7 @@
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body">
-				¿Esta seguro de eliminar este usuario?
+				¿Esta seguro de eliminar este punto de atencion?
 			</div>
 			<div class="modal-footer">
 				<div class="row" style="margin-right: 10px">

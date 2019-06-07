@@ -66,8 +66,6 @@ class AdministradorController extends Controller
         $administrador = User::find($id);
         $puntoAtencion = User::find($id)->puntoDeAtencion;
 
-        /*print($puntoAtencion);*/
-        /*print($administrador);*/
         return view('puntosAtencion/viewId',
             ['puntoAtencion'=>$puntoAtencion,'administrador'=>$administrador]);
     }
@@ -80,7 +78,11 @@ class AdministradorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $administrador = User::find($id);
+        $puntoAtencion = User::find($id)->puntoDeAtencion;
+
+        return view('puntosAtencion/edit',
+            ['puntoAtencion'=>$puntoAtencion,'administrador'=>$administrador]);
     }
 
     /**
@@ -103,6 +105,9 @@ class AdministradorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $administrador = User::find($id);
+        $puntoAtencion = User::find($id)->puntoDeAtencion;
+
+        return redirect('/puntosAtencion/destroy/'.$puntoAtencion->id);
     }
 }

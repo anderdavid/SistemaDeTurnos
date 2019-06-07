@@ -28,6 +28,8 @@ class PuntoDeAtencion extends Model
             return $this->belongsTo('App\User', 'user_id');
     }
 
+   
+
    public function scopeNombre($query,$nombre){
         if($nombre){
             return $query->where('nombre','LIKE',"%nombre%");

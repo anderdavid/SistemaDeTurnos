@@ -2,6 +2,18 @@
 @section('content')
 
 <div class="container">
+	<script type="text/javascript">
+		var idUsuario="";
+
+		function eliminar(id){
+			idAdministrador =id;
+
+		}
+		function borrar(){
+			location.href = "/administradores/destroy/"+idAdministrador;
+		}
+	</script>
+
 	<h1 class="text-secondary">Ver Administradores</h1><br>
 	<form class="form-inline" style="float: right;">
 		<label for="nombre"></label>
@@ -57,7 +69,7 @@
 						</div>
 
 						<div class="col-md-3">
-							<a  href="#"><i class="icono-action far fa-edit"></i>
+							<a  href="/administradores/edit/{{$administrador->id}}"><i class="icono-action far fa-edit"></i>
 								<span class="tooltiptext">Editar</span>
 							</a>
 
@@ -65,7 +77,7 @@
 
 						<div class="col-md-3">
 							
-							<a data-toggle="modal" data-target="#modalErase">
+							<a onclick="eliminar({{$administrador->id}})" data-toggle="modal" data-target="#modalErase">
 								<i class="icono-action fas fa-trash-alt"></i>
 								<span class="tooltiptext">Borrar</span>
 							</a>
@@ -78,6 +90,32 @@
 		</tbody>
 	</table>
 	{!!$administradores->render()!!}
+</div>
+
+<div class="modal" id="modalErase">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header bg-danger ">
+				<h4 class="modal-title text-light">Advertencia!</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+				¿Esta seguro de eliminar este usuario?
+			</div>
+			<div class="modal-footer">
+				<div class="row" style="margin-right: 10px">
+					<div class="col-md-4"></div>
+					<div class="col-md-4">
+						<button onClick="borrar()" class="btn btn-primary">Aceptar</button>
+					</div>
+					<div class="col-md-4">
+						<button class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </div>
 @endsection
 
