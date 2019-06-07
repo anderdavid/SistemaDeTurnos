@@ -28,9 +28,17 @@ class PuntoDeAtencion extends Model
             return $this->belongsTo('App\User', 'user_id');
     }
 
-    /*
-     $table->integer('user_id');//usuarios
-    */
+   public function scopeNombre($query,$nombre){
+        if($nombre){
+            return $query->where('nombre','LIKE',"%nombre%");
+        }
+   }
+
+ /* $table->string('nombre')->unique();
+            $table->string('direccion');
+            $table->string('actividad');
+            $table->string('nombre_empresa');
+            $table->string('nit_empresa');*/
 
  
 

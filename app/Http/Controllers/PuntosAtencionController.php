@@ -23,20 +23,24 @@ class PuntosAtencionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+       $nombre = $request->get('nombre');
+       $empresa =$request->get('empresa');
+     /*  if($nombre==null){
+        $nombre="";
+       }*/
+
        $puntosAtencion = DB::table('puntos_de_atencion')
                             ->join('users', 'users.id', '=', 'puntos_de_atencion.user_id')
                             ->select('puntos_de_atencion.*', 'users.name as administrador')
+                            ->where('nombre','LIKE',"%$nombre%")
+                            ->where('nombre_empresa','LIKE',"%$empresa%")
                             ->orderBy('id', 'ASC')
                             ->paginate(5);
-                            /*->get();*/
-
-
+                            
         return view('puntosAtencion/view', compact('puntosAtencion'));
-       
-        /*return view('puntosAtencion/view', ['puntosAtencion' =>$puntosAtencion]);*/
-     }
+    }
 
     /**
      * Show the form for creating a new resource.
