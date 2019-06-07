@@ -1,13 +1,13 @@
 @extends('layouts.nav-superadministrador')
 @section('content')
-
+	
 <div class="container">
 	<script type="text/javascript">
 		var idUsuario="";
-		
+
 		function eliminar(id){
 			idPuntoAtencion =id;
-			
+
 		}
 		function borrar(){
 			location.href = "/puntosAtencion/destroy/"+idPuntoAtencion;
@@ -23,6 +23,7 @@
 				<th>actividad</th>
 				<th>Nombre Empresa</th>
 				<th>Nit Empresa</th>
+				<th>Administrador</th>
 				<th>Actions</th>
 			</tr>
 		</thead>
@@ -35,13 +36,42 @@
 				<td>{{$puntoAtencion->actividad}}</td>
 				<td>{{$puntoAtencion->nombre_empresa}}</td>
 				<td>{{$puntoAtencion->nit_empresa}}</td>
-				<td>
+				<td>{{$puntoAtencion->administrador}}</td>
+				<!-- <td>
 					<ul>
 						<li><a class="btn btn-success" href="/puntosAtencion/show/{{$puntoAtencion->id}}">Ver</a></li>
 						<li><a class="btn btn-primary" href="/puntosAtencion/edit/{{$puntoAtencion->id}}">Editar</a></li>
-						<!-- <li><a href="/puntosAtencion/destroy/{{$puntoAtencion->id}}">Eliminar</a></li>  -->
+						<li><a href="/puntosAtencion/destroy/{{$puntoAtencion->id}}">Eliminar</a></li> 
 						<li><button class="btn-danger" onclick="eliminar({{$puntoAtencion->id}})" data-toggle="modal" data-target="#modalErase">Eliminar</button></a></li> 
 					</ul>
+				</td> -->
+				<td id="action">
+					<div class="row">
+						<div class="col-md-3">
+							<a href="/puntosAtencion/show/{{$puntoAtencion->id}}">
+								<i class="icono-action fa fa-eye"></i>
+								<span class="tooltiptext">Ver</span>
+							</a>
+						</div>
+
+						<div class="col-md-3">
+							<a  href="/puntosAtencion/edit/{{$puntoAtencion->id}}"><i class="icono-action far fa-edit"></i>
+								<span class="tooltiptext">Editar</span>
+							</a>
+
+						</div>
+
+						<div class="col-md-3">
+							<!-- <a href="#miModal"><i class="icono-action fas fa-trash-alt"></i>
+								<span class="tooltiptext">Borrar</span>
+							</a> -->
+							<a onclick="eliminar({{$puntoAtencion->id}})" data-toggle="modal" data-target="#modalErase">
+								<i class="icono-action fas fa-trash-alt"></i>
+								<span class="tooltiptext">Borrar</span>
+							</a>
+						</div>
+					</div>
+					
 				</td>
 			</tr> 
 			@endforeach
@@ -75,6 +105,9 @@
 	</div>
 </div>
 
-
-
+<!-- <div class="col-lg-3">
+	<a href="editarEmpleado.html"><i class="icono-action far fa-edit"></i>
+	 	<span class="tooltiptext">Editar</span>
+	</a>
+</div> -->
 @endsection

@@ -25,10 +25,13 @@ class PuntosAtencionController extends Controller
      */
     public function index()
     {
-        $puntosAtencion = PuntoDeAtencion::all();
-
+       $puntosAtencion = DB::table('puntos_de_atencion')
+                            ->join('users', 'users.id', '=', 'puntos_de_atencion.user_id')
+                            ->select('puntos_de_atencion.*', 'users.name as administrador')
+                            ->get();
+       
         return view('puntosAtencion/view', ['puntosAtencion' =>$puntosAtencion]);
-    }
+     }
 
     /**
      * Show the form for creating a new resource.
