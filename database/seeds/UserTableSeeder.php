@@ -24,13 +24,13 @@ class UserTableSeeder extends Seeder
        $user->save();
        $user->roles()->attach($role_super_admin);
      
-	     $user = new User();
+	     /*$user = new User();
        $user->name ='administrador prueba';
        $user->email='admin@example.com';
        $user->cedula='826213122';
        $user->password = bcrypt('1234');
        $user->save();
-       $user->roles()->attach($role_admin);
+       $user->roles()->attach($role_admin);*/
        
     }
 }

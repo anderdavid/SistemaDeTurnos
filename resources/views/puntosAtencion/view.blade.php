@@ -16,7 +16,7 @@
 	<h1 class="text-secondary">Ver Puntos de Atencion</h1><br>
 	<form class="form-inline" style="float: right;">
 		<label for="nombre"></label>
-		<input class="form-control" type="text" name="nombre" placeholder="Buscar por Nombre"/>
+		<input class="form-control" type="text" name="nombre" placeholder="Buscar por Nombre" />
 		<label for="empresa" style="margin-left: 5px"></label>
 		<input class="form-control" type="text" name="empresa" placeholder="Buscar por Empresa"/>
 		<!-- <button class="btn btn-success" style="margin-left: 10px">

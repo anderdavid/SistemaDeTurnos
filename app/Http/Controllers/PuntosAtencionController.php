@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Redirect;
 use \App\PuntoDeAtencion;
 use \App\User;
+use \App\Role;
 
 class PuntosAtencionController extends Controller
 {
@@ -27,10 +28,7 @@ class PuntosAtencionController extends Controller
     {
        $nombre = $request->get('nombre');
        $empresa =$request->get('empresa');
-     /*  if($nombre==null){
-        $nombre="";
-       }*/
-
+    
        $puntosAtencion = DB::table('puntos_de_atencion')
                             ->join('users', 'users.id', '=', 'puntos_de_atencion.user_id')
                             ->select('puntos_de_atencion.*', 'users.name as administrador')
@@ -64,6 +62,8 @@ class PuntosAtencionController extends Controller
         $mUsuario = new User;
         $mPuntoAtencion = new PuntoDeAtencion;
 
+        $role_admin = Role::where('name','Administrador')->first();
+
         $valUsuario =User::where('email',$request->email)->first();
         $valPuntoAtencion =PuntoDeAtencion::where('nombre',$request->nombrePuntoAtencion)->first();
 
@@ -81,6 +81,7 @@ class PuntosAtencionController extends Controller
                 $mUsuario->cedula=$request->cedula;
                 $mUsuario->password=bcrypt($request->password);
                 $mUsuario->save();
+                $mUsuario->roles()->attach($role_admin);
 
                 $mPuntoAtencion->nombre=$request->nombrePuntoAtencion;
                 $mPuntoAtencion->direccion=$request->direccion;
