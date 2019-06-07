@@ -37,14 +37,7 @@
 				<td>{{$puntoAtencion->nombre_empresa}}</td>
 				<td>{{$puntoAtencion->nit_empresa}}</td>
 				<td>{{$puntoAtencion->administrador}}</td>
-				<!-- <td>
-					<ul>
-						<li><a class="btn btn-success" href="/puntosAtencion/show/{{$puntoAtencion->id}}">Ver</a></li>
-						<li><a class="btn btn-primary" href="/puntosAtencion/edit/{{$puntoAtencion->id}}">Editar</a></li>
-						<li><a href="/puntosAtencion/destroy/{{$puntoAtencion->id}}">Eliminar</a></li> 
-						<li><button class="btn-danger" onclick="eliminar({{$puntoAtencion->id}})" data-toggle="modal" data-target="#modalErase">Eliminar</button></a></li> 
-					</ul>
-				</td> -->
+
 				<td id="action">
 					<div class="row">
 						<div class="col-md-3">
@@ -77,6 +70,7 @@
 			@endforeach
 		</tbody>
 	</table>
+	{!!$puntosAtencion->render()!!}
 </div>
 
 <div class="modal" id="modalErase">
