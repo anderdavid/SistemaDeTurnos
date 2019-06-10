@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\User;
 
 class HomeController extends Controller
 {
@@ -22,10 +23,18 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(Request $request){
+        
+        $userId = $request->user()->id;
+        $rolName =User::find($userId)->roles->first()->name;
 
-        //$request->user()->authorizeRoles(['user', 'admin']);
-        //$request->user()->authorizeRoles(['usuario', 'superusuario']);
-        return view('home');
+        if($rolName==="SuperAdministrador"){
+           return redirect('/puntosAtencion');
+        }else if($rolName==="Administrador"){
+           return view('home');
+        }else{
+          echo "error";
+        }
+
     }
 
     public function createPuntosDeAtencion(Request $request){

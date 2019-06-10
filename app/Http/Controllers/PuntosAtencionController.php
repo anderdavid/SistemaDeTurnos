@@ -16,6 +16,7 @@ class PuntosAtencionController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+       
     }
 
     
@@ -26,6 +27,8 @@ class PuntosAtencionController extends Controller
      */
     public function index(Request $request)
     {
+       $request->user()->authorizeRoles('SuperAdministrador');
+
        $nombre = $request->get('nombre');
        $empresa =$request->get('empresa');
     
@@ -45,8 +48,9 @@ class PuntosAtencionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+         $request->user()->authorizeRoles('SuperAdministrador');
          return view('puntosAtencion/create');
          
     }
@@ -59,6 +63,8 @@ class PuntosAtencionController extends Controller
      */
     public function store(Request $request)
     {
+        $request->user()->authorizeRoles('SuperAdministrador');
+
         $mUsuario = new User;
         $mPuntoAtencion = new PuntoDeAtencion;
 
@@ -107,8 +113,10 @@ class PuntosAtencionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
+        $request->user()->authorizeRoles('SuperAdministrador');
+
         $puntoAtencion = PuntoDeAtencion::find($id);
         $administrador = PuntoDeAtencion::find($id)->getIdusuario;
 
@@ -125,8 +133,10 @@ class PuntosAtencionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
+         $request->user()->authorizeRoles('SuperAdministrador');
+
          $puntoAtencion = PuntoDeAtencion::find($id);
          $administrador = PuntoDeAtencion::find($id)->getIdusuario;
 
@@ -143,6 +153,8 @@ class PuntosAtencionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->user()->authorizeRoles('SuperAdministrador');
+
         $puntoAtencion = PuntoDeAtencion::find($id);
         $administrador = PuntoDeAtencion::find($id)->getIdusuario;
         
@@ -221,8 +233,10 @@ class PuntosAtencionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
+        $request->user()->authorizeRoles('SuperAdministrador');
+
         $userId=\App\PuntoDeAtencion::find($id)->getIdusuario->id;
         $deleteUser = \App\User::where('id',$userId)->delete();
         return redirect('puntosAtencion');

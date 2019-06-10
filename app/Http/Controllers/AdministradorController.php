@@ -16,6 +16,8 @@ class AdministradorController extends Controller
      */
     public function index(Request $request)
     {
+        $request->user()->authorizeRoles('SuperAdministrador');
+
         $nombre = $request->get('nombre');
         $cedula =$request->get('cedula');
 
@@ -39,9 +41,9 @@ class AdministradorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->user()->authorizeRoles('SuperAdministrador');
     }
 
     /**
@@ -52,7 +54,7 @@ class AdministradorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->user()->authorizeRoles('SuperAdministrador');
     }
 
     /**
@@ -61,8 +63,10 @@ class AdministradorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show(Request $request,$id)
+    {   
+        $request->user()->authorizeRoles('SuperAdministrador');
+
         $administrador = User::find($id);
         $puntoAtencion = User::find($id)->puntoDeAtencion;
 
@@ -76,8 +80,9 @@ class AdministradorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
+        $request->user()->authorizeRoles('SuperAdministrador');
         $administrador = User::find($id);
         $puntoAtencion = User::find($id)->puntoDeAtencion;
 
@@ -94,7 +99,7 @@ class AdministradorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->user()->authorizeRoles('SuperAdministrador');
     }
 
     /**
@@ -103,8 +108,9 @@ class AdministradorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
+        $request->user()->authorizeRoles('SuperAdministrador');
         $administrador = User::find($id);
         $puntoAtencion = User::find($id)->puntoDeAtencion;
 
