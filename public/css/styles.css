@@ -24,3 +24,13 @@
 .icono-action:hover ~.tooltiptext{
 	visibility: visible;
 }
+
+.container-buttons{
+  margin:20px 10px;
+  display: flex;
+  float: right;
+}
+.container-buttons .btn{
+  margin-right: 5px;
+  color:#fff;
+}
