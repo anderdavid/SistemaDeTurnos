@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    HELLO WORLD SISTEMA DE TURNOS
+                    <h3>SISTEMA DE TURNOS</h3>
                 </div>
             </div>
         </div>
