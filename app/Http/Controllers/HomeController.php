@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\User;
+use \App\Turno;
 
 class HomeController extends Controller
 {
@@ -30,7 +31,27 @@ class HomeController extends Controller
         if($rolName==="SuperAdministrador"){
            return redirect('/puntosAtencion');
         }else if($rolName==="Administrador"){
-           return view('home');
+
+            $puntoAtencionId =User::find($userId)->PuntoDeAtencion->id;
+            $request->session()->put('puntoAtencionId', $puntoAtencionId);
+            //echo $puntoAtencionId;
+            echo "punto de atencion id: ".$request->session()->get('puntoAtencionId');
+
+            echo "turnos <br>";
+
+            $mTurno = new Turno();
+            $mTurno->setTable("turnos11");
+
+            echo "nombre table: ". $mTurno->getTable()."<br>";
+
+           /* $turnos = \App\Turno::all();*/
+            $turnos =  $mTurno->all();
+
+
+
+            echo json_encode($turnos);
+
+           //return view('home');
         }else{
           echo "error";
         }
