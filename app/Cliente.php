@@ -1,12 +1,14 @@
 <?php
 
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
 {
-	protected $table ="clientes";
+
+	use \App\Traits\BindsDynamically;
+	//protected $table ="clientes";
+	/*protected $table ="clientes1";*/
 
     public function turnos(){
     	return $this->hasMany("App\Turno"); 
