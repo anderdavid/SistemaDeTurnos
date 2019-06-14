@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/create/puntosDeAtencion','HomeController@createPuntosDeAtencion')->name('puntosDeAtencion');
 Route::get('/create/oficinistas','HomeController@createOficinistas')->name('oficinistas');
 Route::get('/ambos','HomeController@ambos')->name('ambos');
+Route::get('/sonUser','sonUserController@index');
 
 Route::get('/puntosAtencion', 'PuntosAtencionController@index');
 Route::get('/puntosAtencion/show', 'PuntosAtencionController@index');
