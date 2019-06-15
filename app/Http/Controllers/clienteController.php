@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 use \App\Cliente;
 
 
@@ -84,6 +86,45 @@ class clienteController extends Controller
             return true;
          }
        
+        
+    }
+    public function createTableSchema(){
+        $puntoAtencionId =21;
+        if($this->createTableClientsSchema($puntoAtencionId)){
+
+           DB::insert("INSERT INTO clientes".$puntoAtencionId." VALUES(id,'pablito','1082736234','ckta medica',15,now(),now());");
+
+           DB::insert("INSERT INTO clientes".$puntoAtencionId." VALUES(id,'pedrito','1082736233','ckta medica',15,now(),now());");
+
+           DB::insert("INSERT INTO clientes".$puntoAtencionId." VALUES(id,'maria','1082736231','ckta medica',15,now(),now());");
+        }
+
+        $cliente = new Cliente;
+        $cliente->setTable("clientes".$puntoAtencionId);
+        $clientes = $cliente->get();
+         
+        return view('clientes/viewClientes', ['clientes' =>$clientes]);
+    }
+    public function createTableClientsSchema($id){
+        if (!Schema::hasTable('clientes'.$id)) {
+
+            Schema::create('clientes'.$id, function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->string('cedula');
+            $table->string('asunto');
+            
+            $table->unsignedBigInteger('punto_de_atencion_id');                
+            $table->foreign('punto_de_atencion_id')
+                  ->references('id')->on('puntos_de_atencion')
+                  ->onDelete('cascade');
+            
+            $table->timestamps();
+            });
+
+            
+        }
+        return true;
         
     }
 

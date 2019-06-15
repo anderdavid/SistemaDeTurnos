@@ -29,5 +29,6 @@
 		</tbody>
 	</table>
 	<a href="/clientes/createTable" class="btn btn-success">Crear Tabla Clientes10</a>
+	<a href="/clientes/createTableSchema" class="btn btn-success">Crear Tabla Clientes21</a>
 </div>
 @endsection
