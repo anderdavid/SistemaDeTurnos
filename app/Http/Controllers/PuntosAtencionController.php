@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 use Redirect;
 use \App\PuntoDeAtencion;
 use \App\User;
@@ -12,6 +15,7 @@ use \App\Role;
 
 class PuntosAtencionController extends Controller
 {
+   public $puntoAtencionId=0;
 
     public function __construct()
     {
@@ -98,7 +102,21 @@ class PuntosAtencionController extends Controller
                 $mPuntoAtencion->getIdusuario()->associate($mUsuario);
                 $mPuntoAtencion->save();
 
-                return redirect('puntosAtencion');
+                $this->puntoAtencionId =$mPuntoAtencion->id;
+
+                if(!$this->createTableCliente()){
+                    printf("Error al crear tabla clientes".$this->puntoAtencionId);
+                  
+               }else if(!$this->createTableTurno()){
+                    printf("Error al crear tabla turnos".$this->puntoAtencionId);
+               }else{
+                    return redirect('puntosAtencion'); 
+               }
+
+                
+
+               /*echo "here <br>";
+               echo "puntoAtencionId: ".$mPuntoAtencion->id;*/
 
             }catch(\Illuminate\Database\QueryException $e) {
                 return view('puntosAtencion/create',['msg'=>'no se pudo crear punto de atencion ']);
@@ -214,6 +232,8 @@ class PuntosAtencionController extends Controller
                 $puntoAtencion->getIdusuario()->associate($administrador);
                 $puntoAtencion->save();
 
+
+                
                 return redirect('puntosAtencion');
 
             }catch(\Illuminate\Database\QueryException $e) {
@@ -240,6 +260,77 @@ class PuntosAtencionController extends Controller
         $userId=\App\PuntoDeAtencion::find($id)->getIdusuario->id;
         $deleteUser = \App\User::where('id',$userId)->delete();
         return redirect('puntosAtencion');
+    }
+
+    public function createTableCliente(){
+
+        if (!Schema::hasTable('clientes'.$this->puntoAtencionId)) {
+            Schema::create('clientes'.$this->puntoAtencionId, function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->string('cedula');
+            $table->string('asunto');
+            
+            $table->unsignedBigInteger('punto_de_atencion_id');                
+            $table->foreign('punto_de_atencion_id')
+                  ->references('id')->on('puntos_de_atencion')
+                  ->onDelete('cascade');
+            
+            $table->timestamps();
+            });
+            
+        }
+        if(Schema::hasTable('clientes'.$this->puntoAtencionId)){
+            return true;
+        }else{
+            return false;
+        }
+       
+    }
+
+    public function createTableTurno(){
+        if (!Schema::hasTable('turnos'.$this->puntoAtencionId)) {
+
+            Schema::create('turnos'.$this->puntoAtencionId, function (Blueprint $table) {
+
+                $table->bigIncrements('id');
+                $table->string('tiempoAsignado');
+                $table->string('tiempoDespachado');
+                $table->string('clase'); //prefijo
+                $table->string('numero');
+                $table->string('status');
+                
+                $table->unsignedBigInteger('cliente_id');                
+                $table->foreign('cliente_id')
+                    ->references('id')->on('clientes'.$this->puntoAtencionId)
+                    ->onDelete('cascade');
+
+                $table->unsignedBigInteger('oficinista_id');                
+                $table->foreign('oficinista_id')
+                    ->references('id')->on('oficinistas')
+                    ->onDelete('cascade');
+
+
+                $table->unsignedBigInteger('puesto_id');                
+                $table->foreign('puesto_id')
+                    ->references('id')->on('puestos')
+                    ->onDelete('cascade');
+
+                $table->unsignedBigInteger('punto_de_atencion_id');                
+                $table->foreign('punto_de_atencion_id')
+                    ->references('id')->on('puntos_de_atencion')
+                    ->onDelete('cascade');
+                
+                $table->timestamps();
+            });
+        }
+
+         if(Schema::hasTable('turnos'.$this->puntoAtencionId)){
+            return true;
+        }else{
+            return false;
+        }
+        
     }
 }
 
