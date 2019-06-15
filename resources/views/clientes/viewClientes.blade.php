@@ -28,7 +28,6 @@
 		@endforeach
 		</tbody>
 	</table>
-
-	
+	<a href="/clientes/createTable" class="btn btn-success">Crear Tabla Clientes10</a>
 </div>
 @endsection

@@ -39,6 +39,8 @@ Route::get('/administradores/destroy/{id}', 'AdministradorController@destroy');
 
 
 Route::get('/clientes', 'clienteController@index');
+/*Route::get('/clientes/createTable', 'clienteController@create');*/
+Route::get('/clientes/createTable', 'clienteController@createTable');
 
 
 
