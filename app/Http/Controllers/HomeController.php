@@ -30,7 +30,15 @@ class HomeController extends Controller
         if($rolName==="SuperAdministrador"){
            return redirect('/puntosAtencion');
         }else if($rolName==="Administrador"){
-           return view('home');
+           /*return view('home');*/
+          
+
+            $puntoAtencionId =User::find($userId)->PuntoDeAtencion->id;
+            $request->session()->put('puntoAtencionId', $puntoAtencionId);
+            
+           /* echo "punto de atencion id: ".$request->session()->get('puntoAtencionId');*/
+             return redirect('/clientes');
+
         }else{
           echo "error";
         }

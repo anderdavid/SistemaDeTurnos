@@ -15,7 +15,7 @@ class CreateTurnosTable extends Migration
      */
     public function up()
     {
-        Schema::create('turnos', function (Blueprint $table) {
+       /* Schema::create('turnos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('tiempoAsignado');
             $table->string('tiempoDespachado');
@@ -45,7 +45,7 @@ class CreateTurnosTable extends Migration
                   ->onDelete('cascade');
             
             $table->timestamps();
-        });
+        });*/ 
     }
 
     /*
@@ -69,7 +69,13 @@ class CreateTurnosTable extends Migration
                 WHERE table_schema='SistemaDeTurnos' AND table_name LIKE 'turnos%';";
         $queryDelete=DB::select($query, [1]);
 
-        DB::statement($queryDelete[0]->statement);
+          try {
+             DB::statement($queryDelete[0]->statement);
+          } catch (Exception $e) {
+            
+          }
+         
+        
 
         Schema::enableForeignKeyConstraints();
     }

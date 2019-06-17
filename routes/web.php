@@ -21,7 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/create/puntosDeAtencion','HomeController@createPuntosDeAtencion')->name('puntosDeAtencion');
 Route::get('/create/oficinistas','HomeController@createOficinistas')->name('oficinistas');
 Route::get('/ambos','HomeController@ambos')->name('ambos');
-Route::get('/sonUser','sonUserController@index');
 
 Route::get('/puntosAtencion', 'PuntosAtencionController@index');
 Route::get('/puntosAtencion/show', 'PuntosAtencionController@index');
@@ -38,10 +37,11 @@ Route::get('/administradores/edit/{id}', 'AdministradorController@edit');
 Route::get('/administradores/destroy/{id}', 'AdministradorController@destroy');
 
 
-Route::get('/clientes', 'clienteController@index');
-/*Route::get('/clientes/createTable', 'clienteController@create');*/
+Route::get('/clientes', 'ClienteController@index');
+Route::get('/clientes2', 'ClienteController@index2');
+/*Route::get('/clientes/createTable', 'clienteController@create');
 Route::get('/clientes/createTable', 'clienteController@createTable');
-Route::get('/clientes/createTableSchema', 'clienteController@createTableSchema');
+Route::get('/clientes/createTableSchema', 'clienteController@createTableSchema');*/
 
 
 

@@ -15,7 +15,7 @@ class CreateClientesTable extends Migration
      */
     public function up()
     {
-        Schema::create('clientes', function (Blueprint $table) {
+        /*Schema::create('clientes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string('cedula');
@@ -26,8 +26,8 @@ class CreateClientesTable extends Migration
                   ->references('id')->on('puntos_de_atencion')
                   ->onDelete('cascade');
             
-            $table->timestamps();
-        });
+            $table->timestamps(); 
+        });*/
     }
 
     /* 
@@ -49,7 +49,12 @@ class CreateClientesTable extends Migration
                 WHERE table_schema='SistemaDeTurnos' AND table_name LIKE 'clientes%'";
         $queryDelete=DB::select($query, [1]);
 
-        DB::statement($queryDelete[0]->statement);
+        try {
+           DB::statement($queryDelete[0]->statement);
+       } catch (Exception $e) {
+        
+       }
+       
 
         Schema::enableForeignKeyConstraints();
 

@@ -75,6 +75,7 @@
          </nav>
          <div>
               @yield('nav-superadministrador')
+              @yield('nav-administrador')
          </div>
          <div style="background: #FAF7AA">
              @yield('alert')

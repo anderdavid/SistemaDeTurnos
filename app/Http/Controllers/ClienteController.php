@@ -11,12 +11,16 @@ use Illuminate\Database\Schema\Blueprint;
 use \App\Cliente;
 
 
-class clienteController extends Controller
-{
+class ClienteController extends Controller
+{   
+
+    public $tableClients ="clientes";
+    public $tableTurnos="turnos";
+
      public function __construct(Request $request)
      {
         $this->middleware('auth');
-       
+      
      }
     /**
      * Display a listing of the resource.
@@ -26,65 +30,25 @@ class clienteController extends Controller
     public function index(Request $request)
     {
        $request->user()->authorizeRoles('Administrador');
-
-       $cliente = new Cliente;
-       $table="clientes".$request->session()->get('puntoAtencionId');
-       $cliente->setTable($table);
-
-       $clientes = $cliente->get();
-       return view('clientes/viewClientes', ['clientes' =>$clientes]);
-    
-    }
-
-     public function index2(Request $request)
-    {
-       $request->user()->authorizeRoles('Administrador'); 
-       $cliente = new Cliente;
+       $this->setTables($request);
        
-
+       $cliente = new Cliente($this->tableClients);
        $clientes = $cliente->get();
        return view('clientes/viewClientes', ['clientes' =>$clientes]);
     
     }
 
+    
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        /*return view('clientes/createtable');*/
-         $request->user()->authorizeRoles('Administrador');
+        $request->user()->authorizeRoles('Administrador');
+        $this->setTables($request);
     }
-
-     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    /*public function createTable(){
-        $puntoAtencionId =17;
-
-        if($this->createTableClients($puntoAtencionId)){
-           DB::insert("INSERT INTO clientes".$puntoAtencionId." VALUES(id,'pablito','1082736234','ckta medica',now(),now(),15);");
-
-           DB::insert("INSERT INTO clientes".$puntoAtencionId." VALUES(id,'pedrito','1082736233','ckta medica',now(),now(),15);");
-
-           DB::insert("INSERT INTO clientes".$puntoAtencionId." VALUES(id,'maria','1082736231','ckta medica',now(),now(),15);");
-        }
-        
-       //$clientes=DB::select('SELECT *FROM clientes'.$puntoAtencionId, [1]);
-
-       $cliente = new Cliente;
-       $cliente->setTable("clientes".$puntoAtencionId);
-       $clientes = $cliente->get();
-         
-        return view('clientes/viewClientes', ['clientes' =>$clientes]);
-     }*/
-     
-   
-   
 
     /**
      * Store a newly created resource in storage.
@@ -95,6 +59,7 @@ class clienteController extends Controller
     public function store(Request $request)
     {
         $request->user()->authorizeRoles('Administrador');
+        $this->setTables($request);
     }
 
     /**
@@ -103,9 +68,10 @@ class clienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
         $request->user()->authorizeRoles('Administrador');
+        $this->setTables($request);
     }
 
     /**
@@ -114,9 +80,10 @@ class clienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
         $request->user()->authorizeRoles('Administrador');
+        $this->setTables($request);
     }
 
     /**
@@ -129,6 +96,7 @@ class clienteController extends Controller
     public function update(Request $request, $id)
     {
         $request->user()->authorizeRoles('Administrador');
+        $this->setTables($request);
     }
 
     /**
@@ -137,8 +105,14 @@ class clienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
          $request->user()->authorizeRoles('Administrador');
+         $this->setTables($request);
+    }
+
+    public function setTables(Request $request){
+        $this->tableClients="clientes".$request->session()->get('puntoAtencionId');
+        $this->tableTurnos="turnos".$request->session()->get('puntoAtencionId'); 
     }
 }
