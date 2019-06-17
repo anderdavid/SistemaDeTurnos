@@ -42,7 +42,10 @@ class CreatePuntoDeAtencionsTable extends Migration
      */
     public function down()
     {
+		Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('puntos_de_atencion');
+		
+		Schema::enableForeignKeyConstraints();
     }
 }
 

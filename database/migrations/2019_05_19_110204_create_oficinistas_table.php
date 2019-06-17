@@ -48,6 +48,9 @@ class CreateOficinistasTable extends Migration
      */
     public function down()
     {
+		Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('oficinistas');
+		
+        Schema::enableForeignKeyConstraints();
     }
 }

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Artisan;
 
 class CreateTurnosTable extends Migration
 {
@@ -60,6 +62,17 @@ class CreateTurnosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('turnos');
+		    Schema::disableForeignKeyConstraints();
+
+        $query ="SELECT CONCAT( 'DROP TABLE ', GROUP_CONCAT(table_name) , ';' ) 
+                AS statement FROM information_schema.tables 
+                WHERE table_schema='SistemaDeTurnos' AND table_name LIKE 'turnos%';";
+        $queryDelete=DB::select($query, [1]);
+
+        DB::statement($queryDelete[0]->statement);
+
+        Schema::enableForeignKeyConstraints();
     }
 }
+
+

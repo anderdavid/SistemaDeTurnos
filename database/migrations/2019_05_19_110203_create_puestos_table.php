@@ -39,6 +39,8 @@ class CreatePuestosTable extends Migration
      */
     public function down()
     {
+		Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('puestos');
+		Schema::enableForeignKeyConstraints();
     }
 }
