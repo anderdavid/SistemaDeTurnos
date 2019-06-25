@@ -15,9 +15,20 @@ class CreateAsuntosTable extends Migration
     {
         Schema::create('asuntos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre_asunto');
+
+            $table->unsignedBigInteger('punto_de_atencion_id');                
+            $table->foreign('punto_de_atencion_id')
+                  ->references('id')->on('puntos_de_atencion')
+                  ->onDelete('cascade');
+            
             $table->timestamps();
         });
     }
+
+/*
+    $table->integer('punto_de_atencion_id'); //puntos_de_atencion
+*/
 
     /**
      * Reverse the migrations.

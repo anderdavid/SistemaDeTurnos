@@ -22,9 +22,9 @@ class CreateClientesTable extends Migration
             $table->string('asunto');
             
             $table->unsignedBigInteger('punto_de_atencion_id');                
-           /* $table->foreign('punto_de_atencion_id')
+            $table->foreign('punto_de_atencion_id')
                   ->references('id')->on('puntos_de_atencion')
-                  ->onDelete('cascade');*/
+                  ->onDelete('cascade');
             
             $table->timestamps(); 
         });

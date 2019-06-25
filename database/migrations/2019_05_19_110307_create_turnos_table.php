@@ -22,8 +22,8 @@ class CreateTurnosTable extends Migration
             $table->string('clase'); //prefijo
             $table->string('numero');
             $table->string('status');
-            
-            /*$table->unsignedBigInteger('cliente_id');                
+
+            $table->unsignedBigInteger('cliente_id');                
             $table->foreign('cliente_id')
                   ->references('id')->on('clientes')
                   ->onDelete('cascade');
@@ -33,16 +33,20 @@ class CreateTurnosTable extends Migration
                   ->references('id')->on('oficinistas')
                   ->onDelete('cascade');
 
- 
+            $table->unsignedBigInteger('asunto_id');        
+            $table->foreign('asunto_id')
+                  ->references('id')->on('asuntos')
+                  ->onDelete('cascade');
+
             $table->unsignedBigInteger('puesto_id');                
             $table->foreign('puesto_id')
                   ->references('id')->on('puestos')
                   ->onDelete('cascade');
-
+            
             $table->unsignedBigInteger('punto_de_atencion_id');                
             $table->foreign('punto_de_atencion_id')
                   ->references('id')->on('puntos_de_atencion')
-                  ->onDelete('cascade');*/
+                  ->onDelete('cascade');
             
             $table->timestamps();
         }); 
@@ -51,6 +55,7 @@ class CreateTurnosTable extends Migration
     /*
     $table->integer('cliente_id'); //clientes
     $table->integer('oficinista_id');  //oficinistas
+    $table->integer('asunto_id');  //asuntos
     $table->integer('puesto_id');//puestos
     $table->integer('punto_de_atencion_id'); //puntos_de_atencion
     */

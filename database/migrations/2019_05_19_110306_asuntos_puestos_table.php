@@ -13,7 +13,12 @@ class AsuntosPuestosTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('asuntos_puestos', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->integer('asunto_id')->unsigned();
+            $table->integer('puesto_id')->unsigned();
+            $table->timestamps(); 
+        });
     }
 
     /**
@@ -23,6 +28,8 @@ class AsuntosPuestosTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('asuntos_puestos'); 
+        Schema::enableForeignKeyConstraints();
     }
 }

@@ -12,16 +12,20 @@ class PuntoDeAtencion extends Model
 		return $this->hasMany('App\Cliente');
     }
 
-    public function turnos(){
-		return $this->hasMany('App\Turno');
+    public function oficinistas(){
+        return $this->hasMany('App\Oficinista');
+    }
+
+    public function asuntos(){
+        return $this->hasMany('App\asuntos');
     }
 
     public function puestos(){
-		return $this->hasMany('App\Puesto');
+        return $this->hasMany('App\Puesto');
     }
 
-    public function oficinistas(){
-		return $this->hasMany('App\Oficinista');
+    public function turnos(){
+		return $this->hasMany('App\Turno');
     }
 
     public function getIdusuario(){
