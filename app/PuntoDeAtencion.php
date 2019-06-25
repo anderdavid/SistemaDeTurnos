@@ -17,7 +17,7 @@ class PuntoDeAtencion extends Model
     }
 
     public function asuntos(){
-        return $this->hasMany('App\asuntos');
+        return $this->hasMany('App\Asunto');
     }
 
     public function puestos(){

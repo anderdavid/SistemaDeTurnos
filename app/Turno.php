@@ -16,17 +16,16 @@ class Turno extends Model
     		return $this->belongsTo('App\Oficinista', 'oficinista_id'); 
     }
     public function getIdAsunto(){
-            return $this->belongsTo('App\asuntos', 'asunto_id');
+            return $this->belongsTo('App\Asunto', 'asunto_id');
     }
 
     public function getIdPuesto(){
             return $this->belongsTo('App\Puesto', 'puesto_id');
     }
-   /*
-
     public function getIdPuntoDeAtencion(){
-    		return $this->belongsTo('App\PuntoDeAtencion', 'punto_de_atencion_id');
-    }*/
+            return $this->belongsTo('App\PuntoDeAtencion', 'punto_de_atencion_id');
+    }
+  
 
    
 

@@ -14,7 +14,7 @@ class Puesto extends Model
    }
 
    public function asuntos(){
-        return $this->belongsToMany("App\asuntos")->withTimestamps();
+        return $this->belongsToMany("App\Asunto")->withTimestamps();
     }
 
    public function getIdOficinista(){
@@ -25,9 +25,7 @@ class Puesto extends Model
       return $this->belongsTo('App\PuntoDeAtencion', 'punto_de_atencion_id');
    }
 
-  /* public function oficinista(){
-       return $this->hasOne('App\Oficinista');
-   }*/
+  
 
    
 
