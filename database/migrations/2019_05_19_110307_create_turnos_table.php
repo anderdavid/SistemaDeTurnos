@@ -28,7 +28,7 @@ class CreateTurnosTable extends Migration
                   ->references('id')->on('clientes')
                   ->onDelete('cascade');
 
-            $table->unsignedBigInteger('oficinista_id');                
+            $table->unsignedBigInteger('oficinista_id')->nullable();                
             $table->foreign('oficinista_id')
                   ->references('id')->on('oficinistas')
                   ->onDelete('cascade');
@@ -38,7 +38,7 @@ class CreateTurnosTable extends Migration
                   ->references('id')->on('asuntos')
                   ->onDelete('cascade');
 
-            $table->unsignedBigInteger('puesto_id');                
+            $table->unsignedBigInteger('puesto_id')->nullable();                
             $table->foreign('puesto_id')
                   ->references('id')->on('puestos')
                   ->onDelete('cascade');
