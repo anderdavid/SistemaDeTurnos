@@ -20,7 +20,7 @@ class CreateOficinistasTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             
-            $table->unsignedBigInteger('punto_de_atencion_id');                
+           /* $table->unsignedBigInteger('punto_de_atencion_id');                
             $table->foreign('punto_de_atencion_id')
                   ->references('id')->on('puntos_de_atencion')
                   ->onDelete('cascade');
@@ -28,7 +28,7 @@ class CreateOficinistasTable extends Migration
             $table->unsignedBigInteger('puesto_id');                
             $table->foreign('puesto_id')
                   ->references('id')->on('puestos')
-                  ->onDelete('cascade');
+                  ->onDelete('cascade');*/
             
 
             $table->timestamps();

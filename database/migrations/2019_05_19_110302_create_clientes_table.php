@@ -15,19 +15,19 @@ class CreateClientesTable extends Migration
      */
     public function up()
     {
-        /*Schema::create('clientes', function (Blueprint $table) {
+        Schema::create('clientes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string('cedula');
             $table->string('asunto');
             
             $table->unsignedBigInteger('punto_de_atencion_id');                
-            $table->foreign('punto_de_atencion_id')
+           /* $table->foreign('punto_de_atencion_id')
                   ->references('id')->on('puntos_de_atencion')
-                  ->onDelete('cascade');
+                  ->onDelete('cascade');*/
             
             $table->timestamps(); 
-        });*/
+        });
     }
 
     /* 

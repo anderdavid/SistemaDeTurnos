@@ -15,7 +15,7 @@ class CreateTurnosTable extends Migration
      */
     public function up()
     {
-       /* Schema::create('turnos', function (Blueprint $table) {
+        Schema::create('turnos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('tiempoAsignado');
             $table->string('tiempoDespachado');
@@ -23,7 +23,7 @@ class CreateTurnosTable extends Migration
             $table->string('numero');
             $table->string('status');
             
-            $table->unsignedBigInteger('cliente_id');                
+            /*$table->unsignedBigInteger('cliente_id');                
             $table->foreign('cliente_id')
                   ->references('id')->on('clientes')
                   ->onDelete('cascade');
@@ -33,7 +33,7 @@ class CreateTurnosTable extends Migration
                   ->references('id')->on('oficinistas')
                   ->onDelete('cascade');
 
-
+ 
             $table->unsignedBigInteger('puesto_id');                
             $table->foreign('puesto_id')
                   ->references('id')->on('puestos')
@@ -42,10 +42,10 @@ class CreateTurnosTable extends Migration
             $table->unsignedBigInteger('punto_de_atencion_id');                
             $table->foreign('punto_de_atencion_id')
                   ->references('id')->on('puntos_de_atencion')
-                  ->onDelete('cascade');
+                  ->onDelete('cascade');*/
             
             $table->timestamps();
-        });*/ 
+        }); 
     }
 
     /*

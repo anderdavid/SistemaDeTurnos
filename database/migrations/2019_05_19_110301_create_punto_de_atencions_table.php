@@ -22,9 +22,9 @@ class CreatePuntoDeAtencionsTable extends Migration
             $table->string('nombre_empresa');
             $table->string('nit_empresa');
             $table->unsignedBigInteger('user_id');                
-            $table->foreign('user_id')
+          /*  $table->foreign('user_id')
                   ->references('id')->on('users')
-                  ->onDelete('cascade');
+                  ->onDelete('cascade');*/
             
             $table->timestamps();
             $table->engine = 'InnoDB';
