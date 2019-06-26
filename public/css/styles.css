@@ -34,3 +34,37 @@
   margin-right: 5px;
   color:#fff;
 }
+
+.mcard{
+ margin-top:50px;
+ padding: 30px;
+
+}
+
+.asuntos-container{
+  
+  padding:10px 10px 10px 10px;
+}
+.mAsunto{
+ 
+
+  float: left;
+  padding: 10px 3px 10px 10px;
+  margin-right: 10px;
+
+}
+.mAsunto .mClose{
+  background-color:#d6e9f8;
+  float: right;
+  border:0;
+  margin-left: 5px;
+}
+.mAsunto strong{
+  margin-right: 5px;  
+}
+
+
+
+
+
+

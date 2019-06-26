@@ -16,6 +16,14 @@
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle active" href="#" id="navbardrop" data-toggle="dropdown">
+						Asuntos
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item  navbar-dark" href="/asuntos/create">Crear Asuntos</a>	
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle active" href="#" id="navbardrop" data-toggle="dropdown">
 						Clientes
 					</a>
 					<div class="dropdown-menu">
