@@ -24,6 +24,15 @@
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle active" href="#" id="navbardrop" data-toggle="dropdown">
+						Oficinistas
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item  navbar-dark" href="/oficinistas">Ver Oficinistas</a>	
+						<a class="dropdown-item  navbar-dark" href="/oficinistas/create">Crear Oficinistas</a>	
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle active" href="#" id="navbardrop" data-toggle="dropdown">
 						Clientes
 					</a>
 					<div class="dropdown-menu">
