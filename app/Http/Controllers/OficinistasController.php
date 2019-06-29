@@ -7,14 +7,21 @@ use Illuminate\Http\Response;
 
 class OficinistasController extends Controller
 {
+     public function __construct(Request $request)
+     {
+        $this->middleware('auth');
+     }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('/oficinistas/viewOficinistas');
+        $request->user()->authorizeRoles('Administrador');
+        $pId =$request->session()->get('puntoAtencionId');
+        return view('/oficinistas/viewOficinistas',['puntoAtencionId'=>$pId]);
 
 
 
@@ -25,9 +32,11 @@ class OficinistasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('/oficinistas/createOficinistas');
+        $request->user()->authorizeRoles('Administrador');
+        $pId =$request->session()->get('puntoAtencionId');
+        return view('/oficinistas/createOficinistas',['puntoAtencionId'=>$pId]);
     }
 
     /**
@@ -38,7 +47,10 @@ class OficinistasController extends Controller
      */
     public function store(Request $request)
     {
-        return new Response("hello world store");
+        $request->user()->authorizeRoles('Administrador');
+        $pId =$request->session()->get('puntoAtencionId');
+        return new Response("hello world store \n"."puntoAtencionId: ".$pId);
+    
     }
 
     /**
@@ -47,9 +59,11 @@ class OficinistasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
-        return view('/oficinistas/viewOficinistasId',['id'=>$id]);
+        $request->user()->authorizeRoles('Administrador');
+        $pId =$request->session()->get('puntoAtencionId');
+        return view('/oficinistas/viewOficinistasId',['id'=>$id,'puntoAtencionId'=>$pId]);
     }
 
     /**
@@ -58,9 +72,11 @@ class OficinistasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        return view('/oficinistas/editOficinistas',['id'=>$id]);
+        $request->user()->authorizeRoles('Administrador');
+        $pId =$request->session()->get('puntoAtencionId');
+        return view('/oficinistas/editOficinistas',['id'=>$id,'puntoAtencionId'=>$pId]);
     }
 
     /**
@@ -72,7 +88,9 @@ class OficinistasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return new Response("hello world update ".$id);
+        $request->user()->authorizeRoles('Administrador');
+        $pId =$request->session()->get('puntoAtencionId');
+        return new Response("hello world update id: ".$id."\n"."puntoAtencionId: ".$pId);
     }
 
     /**
@@ -81,8 +99,10 @@ class OficinistasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        return new Response("hello world destroy".$id);
+        $request->user()->authorizeRoles('Administrador');
+        $pId =$request->session()->get('puntoAtencionId');
+        return new Response("hello world destroy id: ".$id."\n"."puntoAtencionId: ".$pId);
     }
 }
