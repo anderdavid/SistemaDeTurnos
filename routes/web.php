@@ -36,10 +36,19 @@ Route::get('/administradores/show/{id}', 'AdministradorController@show');
 Route::get('/administradores/edit/{id}', 'AdministradorController@edit');
 Route::get('/administradores/destroy/{id}', 'AdministradorController@destroy');
 
-/*Route::get('/asuntos','AsuntosController@index');*/
+
 Route::get('/asuntos/create','AsuntosController@create');
 Route::post('/asuntos/store','AsuntosController@store');
 Route::get('/asuntos/destroy/{id}', 'AsuntosController@destroy');
+
+Route::get('/oficinistas', 'OficinistasController@index');
+Route::get('/oficinistas/show', 'OficinistasController@index');
+Route::get('/oficinistas/create', 'OficinistasController@create');
+Route::any('/oficinistas/store', 'OficinistasController@store');
+Route::get('/oficinistas/show/{id}', 'OficinistasController@show');
+Route::get('/oficinistas/edit/{id}', 'OficinistasController@edit');
+Route::any('/oficinistas/update/{id}', 'OficinistasController@update');
+Route::get('/oficinistas/destroy/{id}', 'OficinistasController@destroy');
 
 Route::get('/clientes', 'ClienteController@index');
 Route::get('/clientes2', 'ClienteController@index2');
