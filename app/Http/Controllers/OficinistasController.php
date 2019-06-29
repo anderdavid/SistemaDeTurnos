@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use \App\Oficinista;
 
 class OficinistasController extends Controller
 {
@@ -21,10 +22,13 @@ class OficinistasController extends Controller
     {
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
-        return view('/oficinistas/viewOficinistas',['puntoAtencionId'=>$pId]);
 
+        $oficinistas =\App\Oficinista::where('punto_de_atencion_id',$pId)->get();
 
+        json_encode($oficinistas);
 
+       return view('/oficinistas/viewOficinistas',
+                ['puntoAtencionId'=>$pId,'oficinistas'=>$oficinistas]);
     }
 
     /**
