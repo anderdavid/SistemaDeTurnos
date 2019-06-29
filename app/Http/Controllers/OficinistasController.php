@@ -25,7 +25,7 @@ class OficinistasController extends Controller
 
         $oficinistas =\App\Oficinista::where('punto_de_atencion_id',$pId)->get();
 
-        json_encode($oficinistas);
+
 
        return view('/oficinistas/viewOficinistas',
                 ['puntoAtencionId'=>$pId,'oficinistas'=>$oficinistas]);
@@ -53,10 +53,28 @@ class OficinistasController extends Controller
     {
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
-        return new Response("hello world store \n"."puntoAtencionId: ".$pId);
-    
-    }
+        
+        echo json_encode($request->all());
 
+        $oficinista = new Oficinista;
+        $oficinista->nombre =$request->nombre;
+        $oficinista->cedula=$request->cedula;
+        $oficinista->email=$request->email;
+        $oficinista->password=bcrypt($request->password);
+        $oficinista->punto_de_atencion_id=$pId;
+        $oficinista->save();
+
+        return redirect('/oficinistas');
+       /* return new Response("hello world store \n"."puntoAtencionId: ".$pId);*/
+    
+        /* <!-- $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->string('cedula');
+            $table->string('email')->unique();
+            $table->string('password'); -->*/
+
+        /*{"_token":"y4KFq2B4slm0Hw9Lewcg0CFTWaYF1VT9dp1Rc5tK","nombre":"dsfdsf","cedula":"3423423","email":"sdfsdf@lkjsd.co","password":"sdfsdf","registrar":"registrar"}*/
+    }
     /**
      * Display the specified resource.
      *

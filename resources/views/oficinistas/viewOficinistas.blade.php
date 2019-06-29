@@ -25,7 +25,8 @@
 					<td>{{$oficinista->nombre}}</td>
 					<td>{{$oficinista->cedula}}</td>
 					<td>{{$oficinista->email}}</td>
-					<td>{{$oficinista->password}}</td>
+					<td>{{substr($oficinista->password, 0, 8)}}</td>
+					
 					<td id="action">
 						<div class="row">
 							<div class="col-md-3">
@@ -60,8 +61,4 @@
 	
 @endsection
 
- <!-- $table->bigIncrements('id');
-$table->string('nombre');
-$table->string('cedula');
-$table->string('email')->unique();
-$table->string('password'); -->
+ 
