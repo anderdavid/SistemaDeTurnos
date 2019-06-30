@@ -1,18 +1,25 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<h1>Ver Oficinista Id</h1>
-	<h2> id: {{$id}}</h2>
-	<h2>punto de atencion Id {{$puntoAtencionId}}</h2>
-</body>
-</html> -->
-
 @extends('layouts.nav-administrador')
 @section('content')
-	<h1>Ver Oficinista Id</h1>
-	<h2> id: {{$id}}</h2>
-	<h2>punto de atencion Id {{$puntoAtencionId}}</h2>
+	
+	<div class="container">
+		<h1 class="text-secondary">Ver Oficinista</h1><br>
+		<div class="row justify-content-center">
+			<div class="col-md-10">
+				<div class="card">
+					<div class="card-header bg-secondary text-white">
+					OFICINISTA
+				</div>
+				<div class="card-body">
+					<p><strong>Id: </strong>{{$oficinista->id}}</p>
+					<p><strong>Nombre: </strong>{{$oficinista->nombre}}</p>
+					<p><strong>Cédula: </strong>{{$oficinista->cedula}}</p>
+					<p><strong>Oficinista: </strong>{{$oficinista->email}}</p>
+					<p><strong>Password: </strong>{{$oficinista->password}}</p>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+	
 @endsection
+

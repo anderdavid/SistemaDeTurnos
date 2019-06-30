@@ -30,7 +30,7 @@
 					<td id="action">
 						<div class="row">
 							<div class="col-md-3">
-								<a href="#">
+								<a href="/oficinistas/show/{{$oficinista->id}}">
 									<i class="icono-action fa fa-eye"></i>
 									<span class="tooltiptext">Ver</span>
 								</a>

@@ -52,7 +52,7 @@ class OficinistasController extends Controller
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
         
-        echo json_encode($request->all());
+       
 
         $oficinista = new Oficinista;
         $oficinista->nombre =$request->nombre;
@@ -75,7 +75,10 @@ class OficinistasController extends Controller
     {
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
-        return view('/oficinistas/viewOficinistasId',['id'=>$id,'puntoAtencionId'=>$pId]);
+
+        $oficinista =Oficinista::find($id);
+
+        return view('/oficinistas/viewOficinistasId',['oficinista'=>$oficinista]);
     }
 
     /**
@@ -105,7 +108,7 @@ class OficinistasController extends Controller
     {
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
-        echo json_encode($request->all());
+        //echo json_encode($request->all());
 
         $oficinista =Oficinista::find($id);
 
@@ -115,7 +118,7 @@ class OficinistasController extends Controller
         $oficinista->password=bcrypt($request->password);
         $oficinista->punto_de_atencion_id=$pId;
         $oficinista->save();
-        
+
          return redirect('/oficinistas');
     }
 
