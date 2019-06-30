@@ -37,7 +37,7 @@
 							</div>
 
 							<div class="col-md-3">
-								<a  href="#"><i class="icono-action far fa-edit"></i>
+								<a  href="/oficinistas/edit/{{$oficinista->id}}"><i class="icono-action far fa-edit"></i>
 									<span class="tooltiptext">Editar</span>
 								</a>
 

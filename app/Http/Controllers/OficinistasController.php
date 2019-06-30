@@ -25,9 +25,7 @@ class OficinistasController extends Controller
 
         $oficinistas =\App\Oficinista::where('punto_de_atencion_id',$pId)->get();
 
-
-
-       return view('/oficinistas/viewOficinistas',
+        return view('/oficinistas/viewOficinistas',
                 ['puntoAtencionId'=>$pId,'oficinistas'=>$oficinistas]);
     }
 
@@ -65,15 +63,7 @@ class OficinistasController extends Controller
         $oficinista->save();
 
         return redirect('/oficinistas');
-       /* return new Response("hello world store \n"."puntoAtencionId: ".$pId);*/
     
-        /* <!-- $table->bigIncrements('id');
-            $table->string('nombre');
-            $table->string('cedula');
-            $table->string('email')->unique();
-            $table->string('password'); -->*/
-
-        /*{"_token":"y4KFq2B4slm0Hw9Lewcg0CFTWaYF1VT9dp1Rc5tK","nombre":"dsfdsf","cedula":"3423423","email":"sdfsdf@lkjsd.co","password":"sdfsdf","registrar":"registrar"}*/
     }
     /**
      * Display the specified resource.
@@ -98,7 +88,10 @@ class OficinistasController extends Controller
     {
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
-        return view('/oficinistas/editOficinistas',['id'=>$id,'puntoAtencionId'=>$pId]);
+        
+        $oficinista =Oficinista::find($id);
+       
+        return view('/oficinistas/editOficinistas',['oficinista'=>$oficinista]);
     }
 
     /**
@@ -112,7 +105,18 @@ class OficinistasController extends Controller
     {
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
-        return new Response("hello world update id: ".$id."\n"."puntoAtencionId: ".$pId);
+        echo json_encode($request->all());
+
+        $oficinista =Oficinista::find($id);
+
+        $oficinista->nombre =$request->nombre;
+        $oficinista->cedula=$request->cedula;
+        $oficinista->email=$request->email;
+        $oficinista->password=bcrypt($request->password);
+        $oficinista->punto_de_atencion_id=$pId;
+        $oficinista->save();
+        
+         return redirect('/oficinistas');
     }
 
     /**
