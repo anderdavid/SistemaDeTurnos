@@ -1,11 +1,20 @@
 @extends('layouts.nav-administrador')
 @section('content')
-	<!-- <h1>ver Oficinistas</h1>
-	<h2>punto de atencion Id {{$puntoAtencionId}}</h2>
-	<p>{{ json_encode($oficinistas)}}</p> -->
+	<script type="text/javascript">
 
+		var idOficinista="";
 
+		function eliminar(id){
+			idOficinista =id;
+		}
+
+		function borrar(){
+			location.href = "/oficinistas/destroy/"+idOficinista;
+		}
+
+	</script>
 	<div class="container">
+
 		<h1 class="text-secondary">Ver Oficinistas</h1><br>
 		<table class="table table-striped">
 			<thead>
@@ -44,7 +53,7 @@
 							</div>
 
 							<div class="col-md-3">
-							<a onclick="alert('eliminar')" data-toggle="modal" data-target="#modalErase">
+							<a onclick="eliminar({{$oficinista->id}})" data-toggle="modal" data-target="#modalErase">
 								<i class="icono-action fas fa-trash-alt"></i>
 								<span class="tooltiptext">Borrar</span>
 							</a>
@@ -57,6 +66,32 @@
 			@endforeach
 		</tbody>
 	</table>
+	</div>
+
+	<div class="modal" id="modalErase">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header bg-danger ">
+					<h4 class="modal-title text-light">Advertencia!</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					¿Esta seguro de eliminar este oficinista?
+				</div>
+				<div class="modal-footer">
+					<div class="row" style="margin-right: 10px">
+						<div class="col-md-4"></div>
+						<div class="col-md-4">
+							<button onClick="borrar()" class="btn btn-primary">Aceptar</button>
+						</div>
+						<div class="col-md-4">
+							<button class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
 	</div>
 	
 @endsection

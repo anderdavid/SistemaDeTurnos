@@ -52,8 +52,6 @@ class OficinistasController extends Controller
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
         
-       
-
         $oficinista = new Oficinista;
         $oficinista->nombre =$request->nombre;
         $oficinista->cedula=$request->cedula;
@@ -108,8 +106,7 @@ class OficinistasController extends Controller
     {
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
-        //echo json_encode($request->all());
-
+       
         $oficinista =Oficinista::find($id);
 
         $oficinista->nombre =$request->nombre;
@@ -132,6 +129,8 @@ class OficinistasController extends Controller
     {
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
-        return new Response("hello world destroy id: ".$id."\n"."puntoAtencionId: ".$pId);
+
+        $deleteOficinista = \App\Oficinista::where('id',$id)->delete();
+        return redirect('/oficinistas');
     }
 }
