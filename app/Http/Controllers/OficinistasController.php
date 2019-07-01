@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use \App\Oficinista;
 
 class OficinistasController extends Controller
@@ -23,10 +24,14 @@ class OficinistasController extends Controller
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
 
-        $oficinistas =\App\Oficinista::where('punto_de_atencion_id',$pId)->get();
+        $oficinistas = DB::table('oficinistas')
+                        ->where('punto_de_atencion_id',$pId)
+                        ->orderBy('id', 'ASC')
+                        ->paginate(5);
 
-        return view('/oficinistas/viewOficinistas',
-                ['puntoAtencionId'=>$pId,'oficinistas'=>$oficinistas]);
+        return view('/oficinistas/viewOficinistas',compact('oficinistas'));
+
+      
     }
 
     /**

@@ -66,6 +66,7 @@
 			@endforeach
 		</tbody>
 	</table>
+	{!!$oficinistas->render()!!}
 	</div>
 
 	<div class="modal" id="modalErase">
