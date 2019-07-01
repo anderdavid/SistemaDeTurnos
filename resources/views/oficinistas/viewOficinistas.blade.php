@@ -15,7 +15,21 @@
 	</script>
 	<div class="container">
 
-		<h1 class="text-secondary">Ver Oficinistas</h1><br>
+        <h1 class="text-secondary">Ver Oficinistas</h1><br>
+        <form class="form-inline" style="float: right;">
+            <label for="nombre"></label>
+            <input class="form-control" type="text" name="nombre" placeholder="Buscar por Nombre" />
+            <label for="empresa" style="margin-left: 5px"></label>
+            <input class="form-control" type="text" name="cedula" placeholder="Buscar por Cedula"/>
+
+            <button type="submit" class="btn btn-info" style="margin-left: 5px">
+                <span style="color:#fff">
+                    <i class="icono-action fa fa-search"
+                        style="color:#fff; font-size:12px">
+                    </i> Buscar
+                </span>
+            </button>
+        </form>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -35,7 +49,7 @@
 					<td>{{$oficinista->cedula}}</td>
 					<td>{{$oficinista->email}}</td>
 					<td>{{substr($oficinista->password, 0, 8)}}</td>
-					
+
 					<td id="action">
 						<div class="row">
 							<div class="col-md-3">
@@ -59,7 +73,7 @@
 							</a>
 						</div>
 					</div>
-					
+
 				</td>
 			</tr>
 
@@ -94,7 +108,6 @@
 			</div>
 		</div>
 	</div>
-	
+
 @endsection
 
- 

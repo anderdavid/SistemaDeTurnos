@@ -24,14 +24,19 @@ class OficinistasController extends Controller
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
 
+        $nombre = $request->get('nombre');
+        $cedula =$request->get('cedula');
+
         $oficinistas = DB::table('oficinistas')
                         ->where('punto_de_atencion_id',$pId)
+                        ->where('oficinistas.nombre','LIKE',"%$nombre%")
+                        ->where('oficinistas.cedula','LIKE',"%$cedula%")
                         ->orderBy('id', 'ASC')
                         ->paginate(5);
 
         return view('/oficinistas/viewOficinistas',compact('oficinistas'));
 
-      
+
     }
 
     /**
@@ -56,7 +61,7 @@ class OficinistasController extends Controller
     {
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
-        
+
         $oficinista = new Oficinista;
         $oficinista->nombre =$request->nombre;
         $oficinista->cedula=$request->cedula;
@@ -66,7 +71,7 @@ class OficinistasController extends Controller
         $oficinista->save();
 
         return redirect('/oficinistas');
-    
+
     }
     /**
      * Display the specified resource.
@@ -94,9 +99,9 @@ class OficinistasController extends Controller
     {
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
-        
+
         $oficinista =Oficinista::find($id);
-       
+
         return view('/oficinistas/editOficinistas',['oficinista'=>$oficinista]);
     }
 
@@ -111,7 +116,7 @@ class OficinistasController extends Controller
     {
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
-       
+
         $oficinista =Oficinista::find($id);
 
         $oficinista->nombre =$request->nombre;
