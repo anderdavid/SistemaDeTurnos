@@ -6,7 +6,7 @@
 		<div class="row justify-content-center">
 			<div class="col-md-10">
 				<form method="POST" action="/oficinistas/update/{{$oficinista->id}}">
-					{{ csrf_field() }}
+					{{ csrf_field() }}	
 					<div class="card">
 						<div class="card-body">
 							<div class="form-group">
@@ -26,7 +26,7 @@
 								<input class="form-control" type="password" name="password" placeholder="Ingrese cedula de oficinista" value="{{$oficinista->password}}">
 							</div>
 							<div class="form-group">
-								<input class="btn btn-success" type="submit" name="registrar" value="Guardar">
+								<input class="btn btn-success" type="submit" name="registrar" value="Actualizar">
 							</div>
 						</div>
 					</div>

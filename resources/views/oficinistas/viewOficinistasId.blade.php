@@ -1,5 +1,10 @@
 @extends('layouts.nav-administrador')
 @section('content')
+	<script type="text/javascript">
+		function editar(id){
+			location.href = "/oficinistas/edit/"+id;
+		}
+	</script>>
 	
 	<div class="container">
 		<h1 class="text-secondary">Ver Oficinista</h1><br>
@@ -18,6 +23,17 @@
 				
 				</div>
 			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="col-md-6">
+						<button class="btn btn-primary" onclick="editar({{$oficinista->id}})">Editar</button>
+						<button class="btn btn-danger">Eliminar</button>
+					</div>
+					<div class="col-md-6"></div>
+				</div>
+			</div>
+			
 		</div>
 	</div>
 	
