@@ -11,19 +11,19 @@
 						<div class="card-body">
 							<div class="form-group">
 								<label for="nombre">Nombre:</label>
-								<input class="form-control" type="text" name="nombre" placeholder="Ingrese nombre de oficinista" value="{{$oficinista->nombre}}">
+								<input class="form-control" type="text" name="nombre" placeholder="Ingrese nombre de oficinista" value="{{$oficinista->nombre}}" required="true">
 							</div>
 							<div class="form-group">
 								<label for="cedula">Cedula:</label>
-								<input class="form-control" type="number" name="cedula" placeholder="Ingrese cedula de oficinista" value="{{$oficinista->cedula}}">
+								<input class="form-control" type="number" name="cedula" placeholder="Ingrese cedula de oficinista" value="{{$oficinista->cedula}}" required="true">
 							</div>
 							<div class="form-group">
 								<label for="email">Email:</label>
-								<input class="form-control" type="email" name="email" placeholder="Ingrese email de oficinista" value="{{$oficinista->email}}">
+								<input class="form-control" type="email" name="email" placeholder="Ingrese email de oficinista" value="{{$oficinista->email}}" required="true">
 							</div>
 							<div class="form-group">
 								<label for="password">Password:</label>
-								<input class="form-control" type="password" name="password" placeholder="Ingrese cedula de oficinista" value="{{$oficinista->password}}">
+								<input class="form-control" type="password" name="password" placeholder="Ingrese cedula de oficinista" value="{{$oficinista->password}}" required="true">
 							</div>
 							<div class="form-group">
 								<input class="btn btn-success" type="submit" name="registrar" value="Actualizar">
