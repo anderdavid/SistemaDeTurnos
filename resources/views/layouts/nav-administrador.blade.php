@@ -22,6 +22,7 @@
 						<a class="dropdown-item  navbar-dark" href="/asuntos/create">Crear Asuntos</a>	
 					</div>
 				</li>
+
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle active" href="#" id="navbardrop" data-toggle="dropdown">
 						Oficinistas
@@ -29,6 +30,15 @@
 					<div class="dropdown-menu">
 						<a class="dropdown-item  navbar-dark" href="/oficinistas">Ver Oficinistas</a>	
 						<a class="dropdown-item  navbar-dark" href="/oficinistas/create">Crear Oficinistas</a>	
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle active" href="#" id="navbardrop" data-toggle="dropdown">
+						Puestos
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item  navbar-dark" href="/puestos">Ver Puestos</a>	
+						<a class="dropdown-item  navbar-dark" href="/puestos/create">Crear Puestos</a>	
 					</div>
 				</li>
 				<li class="nav-item dropdown">

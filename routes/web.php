@@ -50,6 +50,15 @@ Route::get('/oficinistas/edit/{id}', 'OficinistasController@edit');
 Route::any('/oficinistas/update/{id}', 'OficinistasController@update');
 Route::get('/oficinistas/destroy/{id}', 'OficinistasController@destroy');
 
+Route::get('/puestos', 'PuestosController@index');
+Route::get('/puestos/show', 'PuestosController@index');
+Route::get('/puestos/create', 'PuestosController@create');
+Route::any('/puestos/store', 'PuestosController@store');
+Route::get('/puestos/show/{id}', 'PuestosController@show');
+Route::get('/puestos/edit/{id}', 'PuestosController@edit');
+Route::any('/puestos/update/{id}', 'PuestosController@update');
+Route::get('/puestos/destroy/{id}', 'PuestosController@destroy');
+
 Route::get('/clientes', 'ClienteController@index');
 Route::get('/clientes2', 'ClienteController@index2');
 /*Route::get('/clientes/createTable', 'clienteController@create');
