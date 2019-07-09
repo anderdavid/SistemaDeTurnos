@@ -154,11 +154,25 @@ class PuestosController extends Controller
         return redirect('/puestos');
     }
 
-     public function asignarPuestos(Request $request){
+  
+
+    public function asignarPuestos(Request $request){
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
 
-        return view('/puestos/asignarPuestos');
+        $puestos = DB::table('puestos')
+                    ->leftjoin('oficinistas', 'puestos.oficinista_id', '=', 'oficinistas.id')
+                    ->select('puestos.*', 'oficinistas.nombre as oficinista')
+                    ->get();
+
+        
+        $oficinistas = DB::table('oficinistas')
+                        ->leftJoin('puestos', 'puestos.oficinista_id', '=', 'oficinistas.id')
+                        ->select('oficinistas.nombre', 'puestos.numero as puesto')
+                        ->whereNull('puestos.numero')
+                        ->get();
+
+        return view('/puestos/asignarPuestos',['oficinistas'=>$oficinistas,'puestos'=>$puestos]);
     }
 
     public function asignarPuestosUpdate(Request $request){
