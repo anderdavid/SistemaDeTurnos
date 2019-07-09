@@ -28,11 +28,11 @@ class PuestosController extends Controller
         $oficinista =$request->get('oficinista');
 
         $puestos = DB::table('puestos')
-                    ->join('oficinistas', 'puestos.oficinista_id', '=', 'oficinistas.id')
+                    ->leftjoin('oficinistas', 'puestos.oficinista_id', '=', 'oficinistas.id')
                     ->select('puestos.*', 'oficinistas.nombre as oficinista')
                     ->where('puestos.punto_de_atencion_id',$pId)
                     ->where('descripcion','LIKE',"%$descripcion%")
-                    ->where('oficinistas.nombre','LIKE',"%$oficinista%")
+                   /* ->where('oficinistas.nombre','LIKE',"%$oficinista%")*/
                     ->orderBy('id', 'ASC')
                     ->paginate(5);
 
@@ -144,5 +144,19 @@ class PuestosController extends Controller
 
         $deletePuesto = \App\Puesto::where('id',$id)->delete();
         return redirect('/puestos');
+    }
+
+     public function asignarPuestos(Request $request){
+        $request->user()->authorizeRoles('Administrador');
+        $pId =$request->session()->get('puntoAtencionId');
+
+        return view('/puestos/asignarPuestos');
+    }
+
+    public function asignarPuestosUpdate(Request $request){
+        $request->user()->authorizeRoles('Administrador');
+        $pId =$request->session()->get('puntoAtencionId');
+
+        echo "asignarPuestosUpdate";
     }
 }

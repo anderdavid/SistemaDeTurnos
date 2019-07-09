@@ -18,7 +18,7 @@ class CreatePuestosTable extends Migration
             $table->string('numero');
             $table->string('descripcion');
             
-            $table->unsignedBigInteger('oficinista_id');                
+            $table->unsignedBigInteger('oficinista_id')->nullable();                
             $table->foreign('oficinista_id')
                   ->references('id')->on('oficinistas')
                   ->onDelete('cascade');
@@ -51,3 +51,5 @@ class CreatePuestosTable extends Migration
 		Schema::enableForeignKeyConstraints();
     }
 }
+
+

@@ -38,7 +38,9 @@
 					</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item  navbar-dark" href="/puestos">Ver Puestos</a>	
-						<a class="dropdown-item  navbar-dark" href="/puestos/create">Crear Puestos</a>	
+						<a class="dropdown-item  navbar-dark" href="/puestos/create">Crear Puestos</a>
+						<a class="dropdown-item  navbar-dark" href="/puestos/AsignarPuestos/">Asignar Puestos</a>
+					
 					</div>
 				</li>
 				<li class="nav-item dropdown">

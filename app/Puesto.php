@@ -10,7 +10,7 @@ class Puesto extends Model
 
 
    public function turnos(){
-      return $this->hasMany("App\Turno"); 
+      return $this->hasMany("App\Turno");
    }
 
    public function asuntos(){
@@ -25,11 +25,11 @@ class Puesto extends Model
       return $this->belongsTo('App\PuntoDeAtencion', 'punto_de_atencion_id');
    }
 
-  
 
-   
 
- /* 
+
+
+ /*
    $table->integer('punto_de_atencion_id'); //puntos_de_atencion
    $table->integer('oficinista_id'); //oficinistas
  */
