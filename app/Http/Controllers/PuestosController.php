@@ -32,7 +32,16 @@ class PuestosController extends Controller
                     ->select('puestos.*', 'oficinistas.nombre as oficinista')
                     ->where('puestos.punto_de_atencion_id',$pId)
                     ->where('descripcion','LIKE',"%$descripcion%")
-                   /* ->where('oficinistas.nombre','LIKE',"%$oficinista%")*/
+                    ->where(function ($query) use($oficinista)
+                    {
+                        if(empty($oficinista)){
+                             $query->where('oficinistas.nombre','LIKE',"%$oficinista%")
+                            ->orWhereNull('oficinistas.nombre');
+                        }else{
+                            $query->where('oficinistas.nombre','LIKE',"%$oficinista%");
+                        }
+                       
+                    })
                     ->orderBy('id', 'ASC')
                     ->paginate(5);
 
@@ -68,7 +77,6 @@ class PuestosController extends Controller
         $puesto =new Puesto();
         $puesto->numero = $request->numero;
         $puesto->descripcion =$request->descripcion;
-        $puesto->oficinista_id =17;
         $puesto->punto_de_atencion_id=$pId;
         $puesto->save();
 
