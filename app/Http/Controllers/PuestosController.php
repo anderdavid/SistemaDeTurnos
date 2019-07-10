@@ -168,7 +168,7 @@ class PuestosController extends Controller
         
         $oficinistas = DB::table('oficinistas')
                         ->leftJoin('puestos', 'puestos.oficinista_id', '=', 'oficinistas.id')
-                        ->select('oficinistas.nombre', 'puestos.numero as puesto')
+                        ->select('oficinistas.id','oficinistas.nombre', 'puestos.numero as puesto')
                         ->whereNull('puestos.numero')
                         ->get();
 

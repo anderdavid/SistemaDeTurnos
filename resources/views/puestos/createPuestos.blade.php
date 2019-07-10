@@ -1,5 +1,6 @@
 @extends('layouts.nav-administrador')
 @section('content')
+	
 	<div class="container">
 		<h1 class="text-secondary">Crear Puestos</h1><br>
 		<div class="row justify-content-center">
