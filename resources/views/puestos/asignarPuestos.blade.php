@@ -17,37 +17,31 @@ function drop(ev) {
   ev.target.appendChild(document.getElementById(data));
 }
 </script>
-
-<div class="container">
-	
-	<h1 class="text-secondary">Asignar Puestos</h1><br>
-	<div class="row">
-		<div class="col bg-success">
-			<div class="puestos-container">
-				@foreach ($puestos as $puesto)
-				<div id='{{"drag".$puesto->id}}' class="blue" style="background-color: blue; width: 100px; height: 100px"  ondrop="drop(event)" ondragover="allowDrop(event)">
-					<p>{{$puesto->numero}}</p>
-				</div>
-				
-				<br>
-				@endforeach
-			</div>
-		</div>
-
-		<div class="col bg-warning">
-			<div class="oficinistas-container">
-				@foreach ($oficinistas as $oficinista)
-				<div id='{{"drop".$oficinista->id}}' class="red" style="background-color: red; width: 100px; height: 100px" draggable="true" ondragstart="drag(event)">
-					<p>{{$oficinista->nombre}}</p>
-				</div>
-				
-				<br>
-				@endforeach
-			</div>
-		</div>
-	</div>
-</div>
-
-{{json_encode($oficinistas)}}<br>
-{{json_encode($puestos)}}
+  
+  <div class="container">
+  	<h1 class="text-secondary">Asignar Puestos</h1><br>
+  	<div class="row">
+  		 <div class="col-md-6 col-sm-6 col-lg-6">
+  		 	<div  class="container-puestos">
+  		 		<div id="div1" class="drop-image-puestos" ondrop="drop(event)" ondragover="allowDrop(event)">
+  		 		</div>
+  		 		<div class="oficina-info-container_1">
+  		 			<p><span>Oficinista 1</span></p>
+  		 			<p id="descripcion">Descripcion</p>
+  		 		</div>
+  		 	</div>
+  		 	<div class="puesto-info-container">
+  		 			<p><span>Puesto 1</span></p>
+  		 			<p id="descripcion">Descripcion</p>
+  		    </div>
+  		 </div>
+  		 <div class="col-md-6 col-sm-6 col-lg-6">
+  		 	<div  id="drag1" class="container-oficinistas" draggable="true" ondragstart="drag(event)"></div>
+  		 	<div class="oficina-info-container_2">
+  		 			<p><span>Oficinista 1</span></p>
+  		 			<p id="descripcion">Descripcion</p>
+  		    </div>
+  		 </div>
+  	</div>
+  </div>
 @endsection

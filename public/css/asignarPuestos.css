@@ -1,5 +1,51 @@
-#id1{
-	background-color:#F304FC;
-	width: 100px;
+.container-puestos{
+	width: 400px;
 	height: 200px;
+	background-color: #fff;
+	display: flex;
+	margin-right: 100px;
 }
+.container-puestos .drop-image-puestos{
+	width: 200px;
+	height: 200px;
+	background-image: url("../img/puesto.png");
+	background-size: cover;
+}
+.container-puestos .oficina-info-container_1{
+	width: 200px;
+	height: 200px;
+	display: none;
+}
+.puesto-info-container p,.oficina-info-container_1 p,.oficina-info-container_2 p{
+	margin-top :30px;
+	margin-left: 20px;
+	font-size: 16px;
+}
+#descripcion{
+	margin-top:0;
+}
+.puesto-info-container p span,.oficina-info-container_1 p span, .oficina-info-container_2 p span{
+	font-weight: bold;
+	color:#C02D10;
+	font-size:18px;
+}
+.container-oficinistas{
+	width: 200px;
+	height: 200px;
+	background-image: url("../img/avatar_female.png");
+	background-size: cover;
+}
+
+/*.container-oficinistas p{
+	margin-top :40px;
+	font-size: 14px;
+}
+#descripcion{
+	margin-top:0;
+}
+.container-oficinistas p span{
+
+	font-weight: bold;
+	color:#C02D10;
+	font-size:18px;
+}*/
