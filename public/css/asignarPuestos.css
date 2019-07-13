@@ -1,55 +1,62 @@
-.center-container{
-	margin-top: 100px;
-	/*background-color: #FEE903; */
-	width: 50%;
-	margin:auto;
-	overflow: hidden;
+.oficinistas-container{
+    margin-top: 100px;
+	padding: 20px;
+	background-color: #fff;
+	overflow: auto;
+	white-space: nowrap;
 }
 
-.center-container #puesto-title{
-	font-size: 14px;
-	margin-left: 50px;
-	margin-top: 50px;
-	margin-bottom: 5px;
-	font-weight: bold;
-	color:#F86617;
-}
-
-.center-container .puesto-container{
-	/*background-color: #0309FD;*/
-	margin-left: 50px;
-	margin-bottom: 20px;
-	width: 120px;
-	height: 140px;
-	padding: 10px;
-	background-image: url("/img/puesto.png");
-	background-size: cover;
-	border-radius: 10px;
-	
-	
-}
-
-
-.center-container .puesto-container .oficinista-container{
+.oficinistas-container .oficinista-container{
 	background-color: #ffffff;
 	width: 100px;
 	height: 120px;
-	
-
+	display: inline-block;
 }
 
-.center-container .puesto-container .oficinista-container .oficinista-img{
-/*	background-color: #FFFFFF;*/
+.oficinistas-container .oficinista-container .oficinista-img{
 	width: 100px;
 	height: 100px;
 	background-image: url("/img/avatar_female.png");
 	background-size: cover;
 }
-.center-container .puesto-container .oficinista-container #oficicinsta-title{
+
+.oficinistas-container .oficinista-container #oficicinsta-title{
 	font-size: 14px;
 	margin-left: 2px;
 	margin-top: 2px;
 	font-weight: bold;
 	color:#3f9ae5;
-
 }
+
+.puestos-container{
+	margin-top: 100px;
+	padding: 20px;
+	background-color: #fff;
+	display: grid;
+	grid-template-columns: auto auto auto auto auto auto;
+}
+
+.puestos-container .puesto-container{
+	width: 160px;
+	padding:10px;
+}
+
+.puestos-container .puesto-container  #puesto-title{
+	font-size: 14px;
+	margin-left: 10px;
+	margin-bottom: 5px;
+	font-weight: bold;
+	color:#F86617;
+}
+
+.puestos-container .puesto-container .puesto-img{
+	margin: 10px;
+	width: 120px;
+	height: 140px;
+	background-color: #fff;
+	background-image: url("/img/puesto.png");
+	background-size: cover;
+	border-radius: 10px;
+}
+
+
