@@ -163,6 +163,7 @@ class PuestosController extends Controller
         $puestos = DB::table('puestos')
                     ->leftjoin('oficinistas', 'puestos.oficinista_id', '=', 'oficinistas.id')
                     ->select('puestos.*', 'oficinistas.nombre as oficinista')
+                    ->orderBy('numero', 'ASC')
                     ->get();
 
         
