@@ -1,62 +1,65 @@
 .oficinistas-container{
-    margin-top: 100px;
+	margin-top: 50px;
 	padding: 20px;
-	background-color: #fff;
+	background-color: #f7f7f7;
 	overflow: auto;
 	white-space: nowrap;
 }
 
-.oficinistas-container .oficinista-container{
-	background-color: #ffffff;
+.drag-container{
+    background-color: #fff;
 	width: 100px;
 	height: 120px;
 	display: inline-block;
 }
 
-.oficinistas-container .oficinista-container .oficinista-img{
+.oficinista-img{
 	width: 100px;
 	height: 100px;
-	background-image: url("/img/avatar_female.png");
+	background-image: url("../img/avatar_female.png");
 	background-size: cover;
 }
-
-.oficinistas-container .oficinista-container #oficicinsta-title{
+#oficicinsta-title{
 	font-size: 14px;
 	margin-left: 2px;
 	margin-top: 2px;
 	font-weight: bold;
 	color:#3f9ae5;
+	text-align: center;
 }
-
 .puestos-container{
-	margin-top: 100px;
+	margin-top: 50px;
+
 	padding: 20px;
-	background-color: #fff;
+	background-color: #f7f7f7;
 	display: grid;
 	grid-template-columns: auto auto auto auto auto auto;
 }
-
-.puestos-container .puesto-container{
-	width: 160px;
+.drop-container{
+	width: 120px;
+	height: 120px
 	padding:10px;
+	margin: 20px;
 }
 
-.puestos-container .puesto-container  #puesto-title{
+#puesto-title{
 	font-size: 14px;
 	margin-left: 10px;
 	margin-bottom: 5px;
 	font-weight: bold;
 	color:#F86617;
+	margin-left: 15px;
+	margin-top: 10px; 
 }
 
-.puestos-container .puesto-container .puesto-img{
+.puesto-img{
 	margin: 10px;
-	width: 120px;
-	height: 140px;
+	width: 100px;
+	height: 120px;
 	background-color: #fff;
-	background-image: url("/img/puesto.png");
+	background-image: url("../img/puesto.png");
 	background-size: cover;
 	border-radius: 10px;
-}
 
+}
 
