@@ -194,4 +194,15 @@ class PuestosController extends Controller
         
         echo "true";
     }
+
+    public function desAsignarPuestos(Request $request){
+        $request->user()->authorizeRoles('Administrador');
+        $pId =$request->session()->get('puntoAtencionId');
+
+        $puesto= Puesto::find($request->puestoId);
+        $puesto->oficinista_id =null;
+        $puesto->save();
+
+        echo "true";
+    }
 }

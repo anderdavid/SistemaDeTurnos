@@ -60,6 +60,7 @@ Route::any('/puestos/update/{id}', 'PuestosController@update');
 Route::get('/puestos/destroy/{id}', 'PuestosController@destroy');
 Route::get('/puestos/AsignarPuestos/', 'PuestosController@asignarPuestos');
 Route::any('/puestos/AsignarPuestos/update', 'PuestosController@asignarPuestosUpdate');
+Route::any('/puestos/desAsignarPuestos', 'PuestosController@desAsignarPuestos');
 
 Route::get('/clientes', 'ClienteController@index');
 Route::get('/clientes2', 'ClienteController@index2');

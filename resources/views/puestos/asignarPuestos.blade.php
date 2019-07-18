@@ -37,6 +37,20 @@
    }
   }
 
+  function desasignar(puestoId,oficinistaId){
+   /* alert("puestoId: "+puestoId+" oficinistaId"+oficinistaId);*/
+   $.post("/puestos/desAsignarPuestos",{
+      oficinistaId: oficinistaId,
+      puestoId: puestoId,
+      '_token': $('meta[name=csrf-token]').attr('content')
+      },function(data, status){
+         location.href = "/puestos/AsignarPuestos/";
+         //alert(data); //_deb
+      });
+  }
+
+
+
 
 </script>
 
@@ -72,7 +86,11 @@
         @endif
 
       </div>
-    </div> 
+      @if ($puesto->oficinista !=null)
+        <button  class ="btn btn-danger" onclick="desasignar({{$puesto->id}},{{$puesto->oficinistaId}})" id="desAsignar">Desasignar</button>
+      @endif 
+    </div>
+    
 
   @endforeach
    
