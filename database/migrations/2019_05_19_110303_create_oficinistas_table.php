@@ -18,6 +18,7 @@ class CreateOficinistasTable extends Migration
             $table->string('nombre');
             $table->string('cedula');
             $table->string('cargo');
+            $table->string('genero');
             $table->string('email')->unique();
             $table->string('password');
             
@@ -46,3 +47,5 @@ class CreateOficinistasTable extends Migration
         Schema::enableForeignKeyConstraints();
     }
 }
+
+

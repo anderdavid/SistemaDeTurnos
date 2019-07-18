@@ -24,6 +24,10 @@
 								<input class="form-control" type="text" name="cargo" placeholder="Ingrese Cargo de oficinista" required="true">
 							</div>
 							<div class="form-group">
+								<label class="radio-inline"><input type="radio" name="genero" value="Masculino" checked>Masculino</label>
+								<label class="radio-inline"><input type="radio" name="genero" value="Femenino">Femenino</label>
+								</div>
+							<div class="form-group">
 								<label for="email">Email:</label>
 								<input class="form-control" type="email" name="email" placeholder="Ingrese email de oficinista" required="true">
 							</div>
