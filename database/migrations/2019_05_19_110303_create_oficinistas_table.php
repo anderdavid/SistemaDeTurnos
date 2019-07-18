@@ -17,6 +17,7 @@ class CreateOficinistasTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string('cedula');
+            $table->string('cargo');
             $table->string('email')->unique();
             $table->string('password');
             

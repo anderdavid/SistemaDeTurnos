@@ -66,6 +66,7 @@ class OficinistasController extends Controller
         $oficinista->nombre =$request->nombre;
         $oficinista->cedula=$request->cedula;
         $oficinista->email=$request->email;
+        $oficinista->cargo=$request->cargo;
         $oficinista->password=bcrypt($request->password);
         $oficinista->punto_de_atencion_id=$pId;
         $oficinista->save();
@@ -122,6 +123,7 @@ class OficinistasController extends Controller
         $oficinista->nombre =$request->nombre;
         $oficinista->cedula=$request->cedula;
         $oficinista->email=$request->email;
+        $oficinista->cargo=$request->cargo;
         $oficinista->password=bcrypt($request->password);
         $oficinista->punto_de_atencion_id=$pId;
         $oficinista->save();

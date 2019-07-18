@@ -36,6 +36,7 @@
 					<th>id</th>
 					<th>Nombre</th>
 					<th>Cedula</th>
+					<th>Cargo</th>
 					<th>Email</th>
 					<th>Password</th>
 					<th>Action</th>
@@ -47,6 +48,7 @@
 					<td>{{$oficinista->id}}</td>
 					<td>{{$oficinista->nombre}}</td>
 					<td>{{$oficinista->cedula}}</td>
+					<td>{{$oficinista->cargo}}</td>
 					<td>{{$oficinista->email}}</td>
 					<td>{{substr($oficinista->password, 0, 8)}}</td>
 

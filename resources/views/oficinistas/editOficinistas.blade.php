@@ -18,6 +18,10 @@
 								<input class="form-control" type="number" name="cedula" placeholder="Ingrese cedula de oficinista" value="{{$oficinista->cedula}}" required="true">
 							</div>
 							<div class="form-group">
+								<label for="cargo">Cargo:</label>
+								<input class="form-control" type="text" name="cargo" placeholder="Ingrese Cargo de oficinista" value="{{$oficinista->cargo}}" required="true">
+							</div>
+							<div class="form-group">
 								<label for="email">Email:</label>
 								<input class="form-control" type="email" name="email" placeholder="Ingrese email de oficinista" value="{{$oficinista->email}}" required="true">
 							</div>
