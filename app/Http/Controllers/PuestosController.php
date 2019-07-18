@@ -191,17 +191,7 @@ class PuestosController extends Controller
 
         $puesto->oficinista_id =$request->oficinistaId;
         $puesto->save();
-
-       /* if( $puesto->oficinista_id==null){
-            $puesto->oficinista_id =$request->oficinistaId;
-            $puesto->save();
-        }*/
-       
-
-        /* echo "asignarPuestosUpdate"." oficinistaId: ".$request->oficinistaId." puestoId: ".$request->puestoId;*///_deb
-
+        
         echo "true";
-
-       
     }
 }

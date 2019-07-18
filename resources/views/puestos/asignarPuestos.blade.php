@@ -3,7 +3,7 @@
 <script>
 
   $(document).ready(function() {
-   /* alert('hello jquery');*/
+  
   });
 
   function allowDrop(ev) {
@@ -13,7 +13,6 @@
   function drag(ev,oficinistaId) {
     ev.dataTransfer.setData("text", ev.target.id);
     ev.dataTransfer.setData("oficinistaId",oficinistaId);
-   
   }
 
   function drop(ev,id,puestoId) {
@@ -79,11 +78,6 @@
    
    </div>
 </div>
-
-<!-- {{json_encode($puestos)}}<br>
-{{json_encode($oficinistas)}}<br> -->
-
-
 
 @endsection
 
