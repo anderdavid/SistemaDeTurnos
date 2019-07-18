@@ -162,7 +162,7 @@ class PuestosController extends Controller
 
         $puestos = DB::table('puestos')
                     ->leftjoin('oficinistas', 'puestos.oficinista_id', '=', 'oficinistas.id')
-                    ->select('puestos.*', 'oficinistas.nombre as oficinista')
+                    ->select('puestos.*', 'oficinistas.id as oficinistaId','oficinistas.nombre as oficinista')
                     ->orderBy('numero', 'ASC')
                     ->get();
 
@@ -180,6 +180,28 @@ class PuestosController extends Controller
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
 
-        echo "asignarPuestosUpdate";
+        $puesto= Puesto::find($request->puestoId);
+        $oficinista = Oficinista::find($request->oficinistaId);
+
+        $puestoAnterior = Oficinista::find($request->oficinistaId)->puesto;
+        if($puestoAnterior !=null){
+            $puestoAnterior->oficinista_id =null;
+            $puestoAnterior->save();
+        }
+
+        $puesto->oficinista_id =$request->oficinistaId;
+        $puesto->save();
+
+       /* if( $puesto->oficinista_id==null){
+            $puesto->oficinista_id =$request->oficinistaId;
+            $puesto->save();
+        }*/
+       
+
+        /* echo "asignarPuestosUpdate"." oficinistaId: ".$request->oficinistaId." puestoId: ".$request->puestoId;*///_deb
+
+        echo "true";
+
+       
     }
 }
