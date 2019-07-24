@@ -61,7 +61,12 @@
   @foreach ($oficinistas as $oficinista) 
 
     <div id='{{"oficinista".$oficinista->id}}' class="card drag-container" draggable="true" ondragstart="drag(event,{{$oficinista->id}})" >
-      <div class="oficinista-img"></div>
+     <!--  <div class="oficinista-img-female"></div> -->
+    @if($oficinista->genero =="Masculino")
+      <div class="oficinista-img-male"></div>
+    @else
+      <div class="oficinista-img-female"></div>
+    @endif
       <h3 id="oficicinsta-title">{{$oficinista->nombre}}</h3> 
     </div>
 
@@ -80,7 +85,13 @@
       <div id='{{"ImagePuesto".$puesto->id}}' class="puesto-img" ondrop="drop(event,this.id,{{$puesto->id}})" ondragover="allowDrop(event)">
         @if ($puesto->oficinista !=null)
             <div id="drag1" class="card drag-container" draggable="true" ondragstart="drag(event,{{$puesto->oficinistaId}})" >
-            <div class="oficinista-img"></div>
+             
+                 @if($puesto->oficinistaGenero =="Masculino")
+                    <div class="oficinista-img-male"></div>
+                  @else
+                    <div class="oficinista-img-female"></div>
+                  @endif
+            <!-- <div class="oficinista-img"></div> -->
             <h3 id="oficicinsta-title">{{$puesto->oficinista}}</h3> 
           </div>
         @endif

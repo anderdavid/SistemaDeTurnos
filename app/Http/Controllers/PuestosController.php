@@ -162,16 +162,18 @@ class PuestosController extends Controller
 
         $puestos = DB::table('puestos')
                     ->leftjoin('oficinistas', 'puestos.oficinista_id', '=', 'oficinistas.id')
-                    ->select('puestos.*', 'oficinistas.id as oficinistaId','oficinistas.nombre as oficinista')
+                    ->select('puestos.*', 'oficinistas.id as oficinistaId','oficinistas.nombre as oficinista','oficinistas.genero as oficinistaGenero')
                     ->orderBy('numero', 'ASC')
                     ->get();
 
         
         $oficinistas = DB::table('oficinistas')
                         ->leftJoin('puestos', 'puestos.oficinista_id', '=', 'oficinistas.id')
-                        ->select('oficinistas.id','oficinistas.nombre', 'puestos.numero as puesto')
+                        ->select('oficinistas.id','oficinistas.nombre','oficinistas.genero', 'puestos.numero as puesto')
                         ->whereNull('puestos.numero')
                         ->get();
+
+
 
         return view('/puestos/asignarPuestos',['oficinistas'=>$oficinistas,'puestos'=>$puestos]);
     }

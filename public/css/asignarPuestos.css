@@ -14,12 +14,18 @@
 	border-radius: 10px;
 }
 
-.oficinista-img{
+.oficinista-img-male{
 	width: 100px;
 	height: 100px;
 	margin-top:10px;
-	
 	background-image: url("../img/avatar.png");
+	background-size: cover;
+}
+.oficinista-img-female{
+	width: 100px;
+	height: 100px;
+	margin-top:10px;
+	background-image: url("../img/avatar_female.png");
 	background-size: cover;
 }
 #oficicinsta-title{
