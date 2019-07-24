@@ -18,7 +18,7 @@ class CreateOficinistasTable extends Migration
             $table->string('nombre');
             $table->string('cedula');
             $table->string('cargo');
-            $table->string('genero');
+            $table->string('genero')->default("Masculino");
             $table->string('email')->unique();
             $table->string('password');
             

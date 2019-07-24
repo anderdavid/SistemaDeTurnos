@@ -1,6 +1,6 @@
 @extends('layouts.nav-administrador')
 @section('content')
-	
+
 	<div class="container">
 		<h1 class="text-secondary">Editar Oficinista</h1><br>
 		<div class="row justify-content-center">
@@ -20,6 +20,10 @@
 							<div class="form-group">
 								<label for="cargo">Cargo:</label>
 								<input class="form-control" type="text" name="cargo" placeholder="Ingrese Cargo de oficinista" value="{{$oficinista->cargo}}" required="true">
+							</div>
+							<div class="form-group">
+								<label class="radio-inline"><input type="radio" name="genero" value="Masculino" {{$masculino_checkbox}}>Masculino</label>
+								<label class="radio-inline"><input type="radio" name="genero" value="Femenino" {{$femenino_checkbox}}>Femenino</label>
 							</div>
 							<div class="form-group">
 								<label for="email">Email:</label>

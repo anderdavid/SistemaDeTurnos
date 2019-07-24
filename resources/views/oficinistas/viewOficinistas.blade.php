@@ -37,6 +37,7 @@
 					<th>Nombre</th>
 					<th>Cedula</th>
 					<th>Cargo</th>
+					<th>Genero</th>
 					<th>Email</th>
 					<th>Password</th>
 					<th>Action</th>
@@ -49,6 +50,7 @@
 					<td>{{$oficinista->nombre}}</td>
 					<td>{{$oficinista->cedula}}</td>
 					<td>{{$oficinista->cargo}}</td>
+					<td>{{$oficinista->genero}}</td>
 					<td>{{$oficinista->email}}</td>
 					<td>{{substr($oficinista->password, 0, 8)}}</td>
 

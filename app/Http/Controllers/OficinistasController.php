@@ -67,6 +67,7 @@ class OficinistasController extends Controller
         $oficinista->cedula=$request->cedula;
         $oficinista->email=$request->email;
         $oficinista->cargo=$request->cargo;
+        $oficinista->genero=$request->genero;
         $oficinista->password=bcrypt($request->password);
         $oficinista->punto_de_atencion_id=$pId;
         $oficinista->save();
@@ -103,7 +104,19 @@ class OficinistasController extends Controller
 
         $oficinista =Oficinista::find($id);
 
-        return view('/oficinistas/editOficinistas',['oficinista'=>$oficinista]);
+        if($oficinista->genero=="Masculino"){
+            $masculino_checkbox ="checked";
+            $femenino_checkbox ="";
+        }else{
+            $masculino_checkbox ="";
+            $femenino_checkbox ="checked";  
+        }
+
+        return view('/oficinistas/editOficinistas',
+            ['oficinista'=>$oficinista,
+            'masculino_checkbox'=>$masculino_checkbox,
+            'femenino_checkbox'=>$femenino_checkbox
+            ]);
     }
 
     /**
@@ -124,6 +137,7 @@ class OficinistasController extends Controller
         $oficinista->cedula=$request->cedula;
         $oficinista->email=$request->email;
         $oficinista->cargo=$request->cargo;
+        $oficinista->genero=$request->genero;
         $oficinista->password=bcrypt($request->password);
         $oficinista->punto_de_atencion_id=$pId;
         $oficinista->save();

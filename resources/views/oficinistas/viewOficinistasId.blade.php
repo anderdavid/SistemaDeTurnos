@@ -27,6 +27,7 @@
 					<p><strong>Nombre: </strong>{{$oficinista->nombre}}</p>
 					<p><strong>Cédula: </strong>{{$oficinista->cedula}}</p>
 					<p><strong>Cargo: </strong>{{$oficinista->cargo}}</p>
+					<p><strong>Genero: </strong>{{$oficinista->genero}}</p>
 					<p><strong>Oficinista: </strong>{{$oficinista->email}}</p>
 					<p><strong>Password: </strong>{{$oficinista->password}}</p>
 				
