@@ -96,9 +96,15 @@ class PuestosController extends Controller
         $pId =$request->session()->get('puntoAtencionId');
 
         $puesto= Puesto::find($id);
-        $oficinista =Puesto::find($id)->getIdOficinista;
+        $oficinista=Puesto::find($id)->getIdOficinista;
+        
+        $oficinistaNombre="No Asignado";
+        if($oficinista != null){
+            $oficinistaNombre=$oficinista->nombre;
+        }
+       
 
-        return view('/puestos/viewPuestosId',['puesto'=>$puesto,'oficinista'=>$oficinista ]);
+        return view('/puestos/viewPuestosId',['puesto'=>$puesto,'oficinista'=>$oficinistaNombre]);
     }
 
     /**

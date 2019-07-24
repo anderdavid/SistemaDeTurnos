@@ -1,5 +1,6 @@
 @extends('layouts.nav-administrador')
 @section('content')
+
 	<script type="text/javascript">
 		function editar(id){
 			location.href = "/puestos/edit/"+id;
@@ -10,7 +11,7 @@
 		function borrar(){
 			location.href = "/puestos/destroy/"+idPuesto;
 		}
-	</script>>
+	</script>
 	<div class="container">
 		<h1 class="text-secondary">Ver Oficinista</h1><br>
 		<div class="row justify-content-center">
@@ -23,9 +24,7 @@
 					<p><strong>Id: </strong>{{$puesto->id}}</p>
 					<p><strong>Numero: </strong>{{$puesto->numero}}</p>
 					<p><strong>descripcion: </strong>{{$puesto->descripcion}}</p>
-					<p><strong>Oficinista: </strong>{{$oficinista->nombre}}</p>
-					
-				
+					 <p><strong>Oficinista: </strong>{{$oficinista}}</p>
 				</div>
 			</div>
 			<br>

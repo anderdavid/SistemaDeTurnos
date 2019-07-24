@@ -26,27 +26,27 @@
     }else{
       ev.target.appendChild(document.getElementById(data));
 
-    $.post("/puestos/AsignarPuestos/update",{
-      oficinistaId: oficinistaId,
-      puestoId: puestoId,
-      '_token': $('meta[name=csrf-token]').attr('content')
-      },function(data, status){
-         location.href = "/puestos/AsignarPuestos/";
+      $.post("/puestos/AsignarPuestos/update",{
+        oficinistaId: oficinistaId,
+        puestoId: puestoId,
+        '_token': $('meta[name=csrf-token]').attr('content')
+        },function(data, status){
+           location.href = "/puestos/AsignarPuestos/";
       });
 
    }
   }
 
   function desasignar(puestoId,oficinistaId){
-   /* alert("puestoId: "+puestoId+" oficinistaId"+oficinistaId);*/
+  
    $.post("/puestos/desAsignarPuestos",{
       oficinistaId: oficinistaId,
       puestoId: puestoId,
       '_token': $('meta[name=csrf-token]').attr('content')
       },function(data, status){
          location.href = "/puestos/AsignarPuestos/";
-         //alert(data); //_deb
-      });
+     
+    });
   }
 
 
@@ -61,7 +61,7 @@
   @foreach ($oficinistas as $oficinista) 
 
     <div id='{{"oficinista".$oficinista->id}}' class="card drag-container" draggable="true" ondragstart="drag(event,{{$oficinista->id}})" >
-     <!--  <div class="oficinista-img-female"></div> -->
+   
     @if($oficinista->genero =="Masculino")
       <div class="oficinista-img-male"></div>
     @else
@@ -91,7 +91,7 @@
                   @else
                     <div class="oficinista-img-female"></div>
                   @endif
-            <!-- <div class="oficinista-img"></div> -->
+          
             <h3 id="oficicinsta-title">{{$puesto->oficinista}}</h3> 
           </div>
         @endif
