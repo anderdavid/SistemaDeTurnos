@@ -48,10 +48,7 @@
      
     });
   }
-
-
-
-
+  
 </script>
 
 <div class="container">

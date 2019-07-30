@@ -13,7 +13,7 @@ class AsuntosPuestosTable extends Migration
      */
     public function up()
     {
-        Schema::create('asuntos_puestos', function (Blueprint $table) {
+        Schema::create('asunto_puesto', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('asunto_id')->unsigned();
             $table->integer('puesto_id')->unsigned();
@@ -29,7 +29,11 @@ class AsuntosPuestosTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('asuntos_puestos'); 
+        Schema::dropIfExists('asunto_puesto'); 
         Schema::enableForeignKeyConstraints();
     }
 }
+
+
+
+

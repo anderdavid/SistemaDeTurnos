@@ -19,7 +19,8 @@
 						Asuntos
 					</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item  navbar-dark" href="/asuntos/create">Crear Asuntos</a>	
+						<a class="dropdown-item  navbar-dark" href="/asuntos/create">Crear Asuntos</a>
+						<a class="dropdown-item  navbar-dark" href="/asuntos/asignarAsuntos/1">Asignar Asuntos</a>	
 					</div>
 				</li>
 

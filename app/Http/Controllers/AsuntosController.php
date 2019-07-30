@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use \App\Asunto;
+use \App\Puesto;
 
 class AsuntosController extends Controller
 {   
@@ -61,9 +63,7 @@ class AsuntosController extends Controller
 
            return redirect('/asuntos/create'); 
         }
-
-       
-            
+        
     }
 
     /**
@@ -80,5 +80,49 @@ class AsuntosController extends Controller
         $deleteAsunto = \App\Asunto::where('id',$id)->where('punto_de_atencion_id', $pId)->delete();
 
         return redirect('/asuntos/create'); 
+    }
+
+    public function asignarAsuntos(Request $request,$idPuesto){
+        $request->user()->authorizeRoles('Administrador');
+        $pId =$request->session()->get('puntoAtencionId');
+
+        $puestos = DB::table('puestos')
+                    ->leftjoin('oficinistas', 'puestos.oficinista_id', '=', 'oficinistas.id')
+                    ->select('puestos.*', 'oficinistas.id as oficinistaId','oficinistas.nombre as oficinista','oficinistas.genero as oficinistaGenero')
+                    ->orderBy('numero', 'ASC')
+                    ->get();
+
+       
+       $puestoSeleccionado= DB::table('puestos')
+                    ->leftjoin('oficinistas', 'puestos.oficinista_id', '=', 'oficinistas.id')
+                    ->select('puestos.*', 'oficinistas.id as oficinistaId','oficinistas.nombre as oficinista','oficinistas.genero as oficinistaGenero')
+                    ->where('puestos.id','=',$idPuesto)
+                    ->orderBy('numero', 'ASC')
+                    ->first();
+
+      
+
+        $asuntos =\App\Asunto::where('punto_de_atencion_id', $pId)->orderBy('id','DESC')->get();
+        $numAsuntos=$asuntos->count();
+
+        $puestoAsuntos = \App\Puesto::find($idPuesto);
+
+        return view('/asuntos/asignarAsuntos',[
+                     'puestos'=>$puestos,
+                     'puestoSeleccionadoId'=>$idPuesto,
+                     'puestoSeleccionado'=>$puestoSeleccionado,
+                     'asuntos'=> $asuntos,
+                     'puestoAsuntos'=>$puestoAsuntos,
+                     'numAsuntos'=>$numAsuntos
+                    ]);
+
+    }
+
+    public function asignarAsuntosUpdate(Request $request){
+        $request->user()->authorizeRoles('Administrador');
+        $pId =$request->session()->get('puntoAtencionId');
+
+        return new Response("asignarAsuntosUpdate");
+
     }
 }
