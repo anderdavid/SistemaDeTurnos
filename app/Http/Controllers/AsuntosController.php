@@ -148,4 +148,16 @@ class AsuntosController extends Controller
         return new Response("asignarAsuntosUpdate ".$reponse);
     
     }
+
+    public function asignarAsuntosDelete(Request $request){
+
+        $request->user()->authorizeRoles('Administrador');
+        $pId =$request->session()->get('puntoAtencionId');
+
+        $asunto =\App\Asunto::find($request->asuntoId);
+        $asunto->puestos()->detach($request->puestoId);
+
+     return new Response("asignarAsuntosDelete");
+
+    }
 }

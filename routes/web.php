@@ -42,6 +42,8 @@ Route::post('/asuntos/store','AsuntosController@store');
 Route::get('/asuntos/destroy/{id}', 'AsuntosController@destroy');
 Route::any('/asuntos/asignarAsuntos/show/{idPuesto}', 'AsuntosController@asignarAsuntos');
 Route::any('/asuntos/asignarAsuntos/update', 'AsuntosController@asignarAsuntosUpdate');
+Route::any('/asuntos/asignarAsuntos/delete', 'AsuntosController@asignarAsuntosDelete');
+
 
 
 Route::get('/oficinistas', 'OficinistasController@index');

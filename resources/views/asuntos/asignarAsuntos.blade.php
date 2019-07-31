@@ -13,8 +13,7 @@
 	function drag(ev,asuntoId) {
 		ev.dataTransfer.setData("text", ev.target.id);
 		ev.dataTransfer.setData("asuntoId",asuntoId);
-		/*alert(asuntoId);*/
-
+	
 	}
 
 	function drop(ev,id) {
@@ -30,9 +29,20 @@
         	puestoId: id,
         	'_token': $('meta[name=csrf-token]').attr('content')
         },function(data, status){
-        	/*alert(data);*/
-         
-          location.href = "/asuntos/asignarAsuntos/show/"+id;
+        	
+         	location.href = "/asuntos/asignarAsuntos/show/"+id;
+      	});
+	}
+
+	function borrar(idAsunto,idPuesto){
+		
+		$.post("/asuntos/asignarAsuntos/delete",{
+        	asuntoId: idAsunto,
+        	puestoId: idPuesto,
+        	'_token': $('meta[name=csrf-token]').attr('content')
+        },function(data, status){
+        	
+        	location.href = "/asuntos/asignarAsuntos/show/"+idPuesto;
       	});
 	}
 
@@ -92,7 +102,8 @@
 			<div class="mcard card">
 				<div id="asuntos-drop" class="asuntos-container" ondrop="drop(event,{{$puestoSeleccionado->id}})" ondragover="allowDrop(event)">
 					@foreach ($puestoAsuntos->asuntos as $asunto)
-					  <div class="mAsunto alert alert-primary alert-dismissible">
+					  <div class="mAsunto alert alert-primary alert-dismissible" 
+					  	onClick="borrar({{$asunto->id}},{{$puestoSeleccionado->id}})">
 						<button type="button"  class="mClose">&times;</button>
 						<strong>{{$asunto->nombre_asunto}}</strong>
 					  </div>
