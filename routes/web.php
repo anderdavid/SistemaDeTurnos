@@ -40,7 +40,7 @@ Route::get('/administradores/destroy/{id}', 'AdministradorController@destroy');
 Route::get('/asuntos/create','AsuntosController@create');
 Route::post('/asuntos/store','AsuntosController@store');
 Route::get('/asuntos/destroy/{id}', 'AsuntosController@destroy');
-Route::any('/asuntos/asignarAsuntos/{idPuesto}', 'AsuntosController@asignarAsuntos');
+Route::any('/asuntos/asignarAsuntos/show/{idPuesto}', 'AsuntosController@asignarAsuntos');
 Route::any('/asuntos/asignarAsuntos/update', 'AsuntosController@asignarAsuntosUpdate');
 
 

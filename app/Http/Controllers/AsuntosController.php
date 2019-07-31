@@ -122,7 +122,9 @@ class AsuntosController extends Controller
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
 
-        return new Response("asignarAsuntosUpdate");
+        echo "asignarAsuntosUpdate puestoId:".$request->puestoId." asuntoId".$request->asuntoId;
+
+       /* return new Response("asignarAsuntosUpdate");*/
 
     }
 }

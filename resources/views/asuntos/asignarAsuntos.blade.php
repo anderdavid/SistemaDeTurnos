@@ -10,14 +10,30 @@
 		ev.preventDefault();
 	}
 
-	function drag(ev) {
+	function drag(ev,asuntoId) {
 		ev.dataTransfer.setData("text", ev.target.id);
+		ev.dataTransfer.setData("asuntoId",asuntoId);
+		/*alert(asuntoId);*/
+
 	}
 
-	function drop(ev) {
+	function drop(ev,id) {
 		ev.preventDefault();
+
 		var data = ev.dataTransfer.getData("text");
+		var asuntoId = ev.dataTransfer.getData("asuntoId");
+
+		alert('asuntoId: '+asuntoId+' '+'puestoId:'+id);
 		ev.target.appendChild(document.getElementById(data));
+
+		$.post("/asuntos/asignarAsuntos/update",{
+        	asuntoId: asuntoId,
+        	puestoId: id,
+        	'_token': $('meta[name=csrf-token]').attr('content')
+        },function(data, status){
+        	alert(data);
+          //location.href = "/asuntos/asignarAsuntos/1";
+      	});
 	}
 
 
@@ -74,11 +90,11 @@
 			</div>
 
 			<div class="mcard card">
-				<div id="asuntos-drop" class="asuntos-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<div id="asuntos-drop" class="asuntos-container" ondrop="drop(event,{{$puestoSeleccionado->id}})" ondragover="allowDrop(event)">
 					@foreach ($puestoAsuntos->asuntos as $asunto)
 					  <div class="mAsunto alert alert-primary alert-dismissible">
 						<button type="button"  class="mClose">&times;</button>
-						<strong>Sacar al perro</strong>
+						<strong>{{$asunto->nombre_asunto}}</strong>
 					  </div>
 					@endforeach
 					
@@ -100,7 +116,7 @@
 		@else
 			<div class="asuntos-container">
 				@foreach ($asuntos as $asunto)
-				<div id='{{"asunto-drag".$asunto->id}}' class="mAsunto alert alert-primary alert-dismissible" draggable="true" ondragstart="drag(event)">
+				<div id='{{"asunto-drag".$asunto->id}}' class="mAsunto alert alert-primary alert-dismissible" draggable="true" ondragstart="drag(event,{{$asunto->id}})">
 					<button type="button"  class="mClose">&times;</button>
 					<strong>{{$asunto->nombre_asunto}}</strong>
 				</div>
