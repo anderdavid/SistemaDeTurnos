@@ -20,19 +20,19 @@
 	function drop(ev,id) {
 		ev.preventDefault();
 
-		var data = ev.dataTransfer.getData("text");
+		var mData = ev.dataTransfer.getData("text");
 		var asuntoId = ev.dataTransfer.getData("asuntoId");
 
-		alert('asuntoId: '+asuntoId+' '+'puestoId:'+id);
-		ev.target.appendChild(document.getElementById(data));
+	
 
 		$.post("/asuntos/asignarAsuntos/update",{
         	asuntoId: asuntoId,
         	puestoId: id,
         	'_token': $('meta[name=csrf-token]').attr('content')
         },function(data, status){
-        	alert(data);
-          //location.href = "/asuntos/asignarAsuntos/1";
+        	/*alert(data);*/
+         
+          location.href = "/asuntos/asignarAsuntos/show/"+id;
       	});
 	}
 
@@ -43,7 +43,7 @@
 	var puestoSelect="";
 
 	function selectPuesto(sel){
-		location.href ="/asuntos/asignarAsuntos/"+sel.value;
+		location.href ="/asuntos/asignarAsuntos/show/"+sel.value;
 	}
 </script>
 
@@ -53,7 +53,7 @@
 	<div class="row">
 		<div class="form-group col-md-2">
 			<form>
-				<label for="puestos1">Puestos:</label>
+				<label for="puestos">Puestos:</label>
 				<select id="puestos" name="idPuesto" class="form-control" onchange="selectPuesto(this)">
 
 					@foreach ($puestos as $puesto)

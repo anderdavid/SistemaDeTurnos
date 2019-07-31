@@ -52,8 +52,7 @@ class AsuntosController extends Controller
 
         if(isset($valAsunto)&&$valAsunto!=null){
             $msg="Asunto ya existe";
-           /* echo $msg;
-            echo json_encode($valAsunto);*/
+          
             return redirect('/asuntos/create'); 
         }else{
             $asunto = new Asunto();
@@ -119,12 +118,34 @@ class AsuntosController extends Controller
     }
 
     public function asignarAsuntosUpdate(Request $request){
+
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
 
-        echo "asignarAsuntosUpdate puestoId:".$request->puestoId." asuntoId".$request->asuntoId;
+        $asuntoId =$request->asuntoId;
+        $puestoId=$request->puestoId;
 
-       /* return new Response("asignarAsuntosUpdate");*/
+        $asunto =\App\Asunto::find($asuntoId);
+        $puesto =\App\Puesto::find($puestoId);
+        $valAsunto="algo";
 
+        $valAsunto =DB::table('asunto_puesto')
+                    ->select('asunto_puesto.*')
+                    ->where('asunto_id','=',$asuntoId)
+                    ->where('puesto_id','=',$puestoId)
+                    ->first();
+
+        if(isset($valAsunto)&&$valAsunto!=null){
+            $msg="Asunto ya existe";
+           
+        }else{
+           
+            $asunto->puestos()->attach($puesto);
+        }
+
+        $reponse=json_encode($valAsunto);
+
+        return new Response("asignarAsuntosUpdate ".$reponse);
+    
     }
 }
