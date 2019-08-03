@@ -196,7 +196,7 @@ class PuntosAtencionController extends Controller
 
         if(isset($valAdministrador)&&$valAdministrador!=null){
 
-            print_r($valAdministrador);
+         /*   print_r($valAdministrador); //_deb*/
             $msg="Email no valido";
 
             return view('puntosAtencion/edit',
@@ -206,7 +206,9 @@ class PuntosAtencionController extends Controller
                     ]);
 
         }else if(isset($valPuntoAtencion)&&$valPuntoAtencion!=null){
-            print_r($valPuntoAtencion);
+
+           /* print_r($valPuntoAtencion); //_deb*/
+           
             $msg="Nombre punto de atenccion no valido";
 
             return view('puntosAtencion/edit',

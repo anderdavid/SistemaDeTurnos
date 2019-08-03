@@ -39,7 +39,7 @@
 						</div>
 						<div class="form-group">
 							<label for="nit_empresa">Nit Empresa:</label>
-							<input class="form-control" type="text" name="nit_empresa" placeholder="Ingrese nit de la empresa" required="true">
+							<input class="form-control" type="number" name="nit_empresa" placeholder="Ingrese nit de la empresa" required="true">
 						</div>
 					</div>
 
