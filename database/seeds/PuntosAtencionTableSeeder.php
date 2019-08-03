@@ -3,6 +3,10 @@
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Role;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 use \App\PuntoDeAtencion;
 
 class PuntosAtencionTableSeeder extends Seeder
@@ -34,6 +38,60 @@ class PuntosAtencionTableSeeder extends Seeder
 
 		$mPuntoAtencion->getIdusuario()->associate($user);
        	$mPuntoAtencion->save();
+
+       	if (!Schema::hasTable('clientes1')) {
+
+            Schema::create('clientes1', function (Blueprint $table) {
+	            $table->bigIncrements('id');
+	            $table->string('nombre');
+	            $table->string('cedula');
+	            $table->string('asunto');
+	            
+	            $table->unsignedBigInteger('punto_de_atencion_id');                
+	            $table->foreign('punto_de_atencion_id')
+	                  ->references('id')->on('puntos_de_atencion')
+	                  ->onDelete('cascade');
+	            
+	            $table->timestamps();
+            });
+            
+        }
+
+         if (!Schema::hasTable('turnos1')) {
+
+            Schema::create('turnos1', function (Blueprint $table) {
+
+                $table->bigIncrements('id');
+                $table->string('tiempoAsignado');
+                $table->string('tiempoDespachado');
+                $table->string('clase'); //prefijo
+                $table->string('numero');
+                $table->string('status');
+                
+                $table->unsignedBigInteger('cliente_id');                
+                $table->foreign('cliente_id')
+                    ->references('id')->on('clientes1')
+                    ->onDelete('cascade');
+
+                $table->unsignedBigInteger('oficinista_id');                
+                $table->foreign('oficinista_id')
+                    ->references('id')->on('oficinistas')
+                    ->onDelete('cascade');
+
+
+                $table->unsignedBigInteger('puesto_id');                
+                $table->foreign('puesto_id')
+                    ->references('id')->on('puestos')
+                    ->onDelete('cascade');
+
+                $table->unsignedBigInteger('punto_de_atencion_id');                
+                $table->foreign('punto_de_atencion_id')
+                    ->references('id')->on('puntos_de_atencion')
+                    ->onDelete('cascade');
+                
+                $table->timestamps();
+            });
+        }
 
       /* 	for ($i=0; $i <13 ; $i++) { 
        		$user = new User();
