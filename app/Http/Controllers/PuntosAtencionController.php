@@ -55,7 +55,8 @@ class PuntosAtencionController extends Controller
     public function create(Request $request)
     {
          $request->user()->authorizeRoles('SuperAdministrador');
-         return view('puntosAtencion/create');
+		 $mUser = new User;
+         return view('puntosAtencion/create',['user'=>$mUser]);
          
     }
 
@@ -82,7 +83,7 @@ class PuntosAtencionController extends Controller
             return view('puntosAtencion/create',['msg'=>$msg]);
         }else if(isset($valPuntoAtencion)&&$valPuntoAtencion!=null){
             $msg="Nombre punto de atencion no valido";
-            return view('puntosAtencion/create',['msg'=>$msg]);
+            return view('puntosAtencion/create',['msg'=>$msg,'user'=>$request]);
         }else{
             try{
 
