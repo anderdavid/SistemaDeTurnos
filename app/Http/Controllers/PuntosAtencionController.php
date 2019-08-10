@@ -114,10 +114,6 @@ class PuntosAtencionController extends Controller
                     return redirect('puntosAtencion'); 
                }
 
-                
-
-               /*echo "here <br>";
-               echo "puntoAtencionId: ".$mPuntoAtencion->id;*/
 
             }catch(\Illuminate\Database\QueryException $e) {
                 return view('puntosAtencion/create',['msg'=>'no se pudo crear punto de atencion ']);
@@ -188,16 +184,20 @@ class PuntosAtencionController extends Controller
                 WHERE
                 nombre ='".$request->nombrePuntoAtencion."' AND id!=".$puntoAtencion->id;
         $valPuntoAtencion=DB::select($queryValPuntoAtencion,[1]);
-        
-         /* print_r($valAdministrador);
-        echo $queryValAdministrador."<br>";
 
-        print_r($valPuntoAtencion);
-        echo $queryValPuntoAtencion."<br>";*/
+        $queryValPassword ="SELECT *FROM users WHERE email ='".$request->email."' AND password ='".$request->password."'";
+
+        //echo $queryValPassword;
+
+        $valPassword=DB::select($queryValPassword,[1]);
+
+        //echo json_encode($valPassword); //_deb
+        
+        
 
         if(isset($valAdministrador)&&$valAdministrador!=null){
 
-         /*   print_r($valAdministrador); //_deb*/
+       
             $msg="Email no valido";
 
             return view('puntosAtencion/edit',
@@ -208,7 +208,7 @@ class PuntosAtencionController extends Controller
 
         }else if(isset($valPuntoAtencion)&&$valPuntoAtencion!=null){
 
-           /* print_r($valPuntoAtencion); //_deb*/
+          
            
             $msg="Nombre punto de atenccion no valido";
 
@@ -223,7 +223,16 @@ class PuntosAtencionController extends Controller
                 $administrador->name=$request->name;
                 $administrador->email=$request->email;
                 $administrador->cedula=$request->cedula;
-                $administrador->password=bcrypt($request->password);
+
+                if(isset($valPassword) && $valPassword != null){
+                    //echo "here";
+
+                }else{
+                    $administrador->password=bcrypt($request->password);
+                    //echo "here 2";
+                }
+
+               
                 $administrador->save();
 
                 $puntoAtencion->nombre=$request->nombrePuntoAtencion;
