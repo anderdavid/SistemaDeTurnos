@@ -13,7 +13,14 @@
 			location.href = "/puntosAtencion/destroy/"+idPuntoAtencion;
 		}
 	</script>
-	<h1 class="text-secondary">Ver Puntos de Atencion</h1><br>
+	<style type="text/css">
+		#columna{
+			width: 100px;
+			overflow: auto;
+			background-color: #826222;
+		}
+	</style>
+	<h2 class="text-secondary">Ver Puntos de Atención</h2><br>
 	<form class="form-inline" style="float: right;">
 		<label for="nombre"></label>
 		<input class="form-control" type="text" name="nombre" placeholder="Buscar por Nombre" />
@@ -29,23 +36,23 @@
 		</button>
 	</form>
 	<br><br> 
-	<table class="table table-striped">
-		<thead>
+	<table class="table  table-striped table-responsive-md mt-3">
+		<thead class="thead-dark">
 			<tr>
-				<th>id</th>
-				<th>Nombre</th>
-				<th>direccion</th>
-				<th>actividad</th>
-				<th>Nombre Empresa</th>
-				<th>Nit Empresa</th>
-				<th>Administrador</th>
-				<th>Actions</th>
+			<th id="mId">id</th>
+			<th>Nombre</th>
+			<th>Dirección</th>
+			<th>Actividad</th>
+			<th>Nombre Empresa</th>
+			<th>Nit Empresa</th>
+			<th>Administrador</th>
+			<th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach ($puntosAtencion as $puntoAtencion)
 			<tr>
-				<th>{{$puntoAtencion->id}}</th>
+				<td>{{$puntoAtencion->id}}</td>
 				<td>{{$puntoAtencion->nombre}}</td>
 				<td>{{$puntoAtencion->direccion}}</td>
 				<td>{{$puntoAtencion->actividad}}</td>
@@ -70,9 +77,7 @@
 						</div>
 
 						<div class="col-md-3">
-							<!-- <a href="#miModal"><i class="icono-action fas fa-trash-alt"></i>
-								<span class="tooltiptext">Borrar</span>
-							</a> -->
+							
 							<a onclick="eliminar({{$puntoAtencion->id}})" data-toggle="modal" data-target="#modalErase">
 								<i class="icono-action fas fa-trash-alt"></i>
 								<span class="tooltiptext">Borrar</span>
