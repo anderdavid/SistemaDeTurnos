@@ -14,7 +14,7 @@
 		}
 	</script>
 
-	<h1 class="text-secondary">Ver Administradores</h1><br>
+	<h2 class="text-secondary">Ver Administradores</h2><br>
 	<form class="form-inline" style="float: right;">
 		<label for="nombre"></label>
 		<input class="form-control" type="text" name="nombre" placeholder="Buscar por Nombre" />
@@ -30,16 +30,16 @@
 		</button>
 	</form>
 	<br><br>
-	<table class="table table-striped">
-		<thead>
+	<table class="table  table-striped table-responsive-md mt-3">
+		<thead class="thead-dark">
 			<tr>
-				<th>id</th>
-				<th>Nombre</th>
-				<th>Email</th>
-				<th>Cedula</th>
-				<th>Punto de Atencion</th>
-				<th>Password</th>
-				<th>Actions</th>
+			<th id="mId">id</th>
+			<th>Nombre</th>
+			<th>Email</th>	
+			<th>Cédula</th>	
+			<th>Punto de Atención</th>	
+			<th>Password</th>	
+			<th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>

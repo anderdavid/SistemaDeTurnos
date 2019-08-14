@@ -23,8 +23,8 @@
 				</div>
 				<div class="card-body">
 					<p><strong>Id: </strong>{{$puntoAtencion->id}}</p>
-					<p><strong>Nombre: </strong>{{$puntoAtencion->nombre}}</p>
-					<p><strong>Direccion: </strong>{{$puntoAtencion->direccion}}</p>
+					<p><strong>Nombre Punto de Atención : </strong>{{$puntoAtencion->nombre}}</p>
+					<p><strong>Dirección: </strong>{{$puntoAtencion->direccion}}</p>
 					<p><strong>Actividad: </strong>{{$puntoAtencion->actividad}}</p>
 					<p><strong>Nombre Empresa: </strong>{{$puntoAtencion->nombre_empresa}}</p>
 					<p><strong>Nit Empresa: </strong>{{$puntoAtencion->nit_empresa}}</p>
@@ -38,7 +38,7 @@
 					<p><strong>id: </strong>{{$administrador->id}}</p>
 					<p><strong>Nombre: </strong>{{$administrador->name}}</p>
 					<p><strong>Email: </strong>{{$administrador->email}}</p>
-					<p><strong>Cedula: </strong>{{$administrador->cedula}}</p>
+					<p><strong>Cédula: </strong>{{$administrador->cedula}}</p>
 					<p><strong>Password: </strong>{{$administrador->password}}</p>
 				</div>	
 			</div>
