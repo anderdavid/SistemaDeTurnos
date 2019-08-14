@@ -29,7 +29,7 @@ class AdministradorController extends Controller
                             ->where('roles.name','Administrador')
                             ->where('users.name','LIKE',"%$nombre%")
                             ->where('users.cedula','LIKE',"%$cedula%")
-                            ->orderBy('id', 'ASC')
+                            ->orderBy('id', 'DESC')
                             ->paginate(5);
                              
        return view('administradores/view', compact('administradores'));

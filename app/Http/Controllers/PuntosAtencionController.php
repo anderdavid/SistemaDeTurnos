@@ -41,7 +41,7 @@ class PuntosAtencionController extends Controller
                             ->select('puntos_de_atencion.*', 'users.name as administrador')
                             ->where('nombre','LIKE',"%$nombre%")
                             ->where('nombre_empresa','LIKE',"%$empresa%")
-                            ->orderBy('id', 'ASC')
+                            ->orderBy('id', 'DESC')
                             ->paginate(5);
                             
         return view('puntosAtencion/view', compact('puntosAtencion'));

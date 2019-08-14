@@ -50,15 +50,8 @@
 				<td>{{$administrador->email}}</td>
 				<td>{{$administrador->cedula}}</td>
 				<td>{{$administrador->punto_de_atencion}}</td>
-				<!-- <td>{{$administrador->password}}</td> -->
-				<td>{{substr($administrador->password, 0, 8)}}</td>
-				<!-- <td>
-					<ul>
-						<li><a href="/administradores/show/{{$administrador->id}}">Ver</a></li>
-						<li><a href="#">Editar</a></li>
-						<li><a href="#">Eliminar</a></li>
-					</ul>
-				</td> -->
+			    <td>{{substr($administrador->password, 0, 8)}}</td>
+				
 				<td id="action">
 					<div class="row">
 						<div class="col-md-3">

@@ -6,10 +6,13 @@ th{
   width: 200px;
   overflow: auto;
   vertical-align:middle;
+  background-color: #D13030;
+
   
 }
 #mId{
   width: 80px;
+
 }
 .tooltiptext{
   visibility: hidden;
