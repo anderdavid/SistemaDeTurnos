@@ -82,6 +82,7 @@ class AsuntosController extends Controller
     }
 
     public function asignarAsuntos(Request $request,$idPuesto){
+
         $request->user()->authorizeRoles('Administrador');
         $pId =$request->session()->get('puntoAtencionId');
 
@@ -93,28 +94,35 @@ class AsuntosController extends Controller
 
         $numPuestos =$puestos->count();
 
-       
-       $puestoSeleccionado= DB::table('puestos')
-                    ->leftjoin('oficinistas', 'puestos.oficinista_id', '=', 'oficinistas.id')
-                    ->select('puestos.*', 'oficinistas.id as oficinistaId','oficinistas.nombre as oficinista','oficinistas.genero as oficinistaGenero')
-                    ->where('puestos.id','=',$idPuesto)
-                    ->orderBy('numero', 'ASC')
-                    ->first();
-
-       // echo $numPuestos;//_deb
+        $asuntos =\App\Asunto::where('punto_de_atencion_id', $pId)->orderBy('id','DESC')->get();
+        $numAsuntos=$asuntos->count();
 
         if($numPuestos==0){
             return view('/asuntos/asignarAsuntos',['data'=>false]);
            
         }else{
-            echo json_encode($puestos);
+         
+            $puestoSeleccionado= DB::table('puestos')
+                    ->leftjoin('oficinistas', 'puestos.oficinista_id', '=', 'oficinistas.id')
+                    ->select('puestos.*', 'oficinistas.id as oficinistaId','oficinistas.nombre as oficinista','oficinistas.genero as oficinistaGenero')
+                    ->where('puestos.id','=',$idPuesto)
+                    ->orderBy('numero', 'ASC')
+                    ->first();
+             $puestoAsuntos = \App\Puesto::find($idPuesto);
 
-            // return view('/asuntos/asignarAsuntos', ['puestos' =>$puestos,'data'=>true]);
-             //return view('/asuntos/asignarAsuntos',['data'=>true]); 
-            $asuntos =\App\Asunto::where('punto_de_atencion_id', $pId)->orderBy('id','DESC')->get();
-            $numAsuntos=$asuntos->count();
+    
 
-            $puestoAsuntos = \App\Puesto::find($idPuesto);
+            if($puestoSeleccionado==null){
+                $puestoSeleccionadoTemp = DB::table('puestos')->first();
+                $puestoSeleccionado= DB::table('puestos')
+                        ->leftjoin('oficinistas', 'puestos.oficinista_id', '=', 'oficinistas.id')
+                        ->select('puestos.*', 'oficinistas.id as oficinistaId','oficinistas.nombre as oficinista','oficinistas.genero as oficinistaGenero')
+                        ->where('puestos.id','=',$puestoSeleccionadoTemp->id)
+                        ->orderBy('numero', 'ASC')
+                        ->first();
+                $puestoAsuntos = \App\Puesto::find($puestoSeleccionadoTemp->id);
+            } 
+            
 
             return view('/asuntos/asignarAsuntos',[
                         'puestos'=>$puestos,
@@ -126,35 +134,6 @@ class AsuntosController extends Controller
                         'data'=>true
                         ]); 
         }
-
-        
-
-
-       /* if($numPuestos==0){
-            return view('/asuntos/asignarAsuntos',['data'=>false]);
-           
-        }else{
-           return view('/asuntos/asignarAsuntos',['data'=>true]); 
-            $asuntos =\App\Asunto::where('punto_de_atencion_id', $pId)->orderBy('id','DESC')->get();
-            $numAsuntos=$asuntos->count();
-
-            $puestoAsuntos = \App\Puesto::find($idPuesto);
-
-            return view('/asuntos/asignarAsuntos',[
-                        'puestos'=>'puestos',
-                        'puestoSeleccionadoId'=>$idPuesto,
-                        'puestoSeleccionado'=>$puestoSeleccionado,
-                        'asuntos'=> $asuntos,
-                        'puestoAsuntos'=>$puestoAsuntos,
-                        'numAsuntos'=>$numAsuntos,
-                        'data'=>true
-                        ]); 
-           
-        }*/
-
-      
-
-       
 
     }
 
@@ -202,3 +181,5 @@ class AsuntosController extends Controller
 
     }
 }
+
+

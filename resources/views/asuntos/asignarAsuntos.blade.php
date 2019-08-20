@@ -78,7 +78,9 @@
 				</select>
 			</form>
 		</div>
-		<div class="col-md-2"></div>
+		<div class="col-md-2">
+			
+		</div>
 		<div class="col-md-8 card">
 			<div class="card drop-container">
 				<h3 id="puesto-title">Puesto {{$puestoSeleccionado->numero}}</h3>
@@ -98,7 +100,46 @@
 
 			 	</div> 
 			</div>
+
+			<div class="mcard card">
+				<div id="asuntos-drop" class="asuntos-container" ondrop="drop(event,{{$puestoSeleccionado->id}})" ondragover="allowDrop(event)">
+					@foreach ($puestoAsuntos->asuntos as $asunto)
+					  <div class="mAsunto alert alert-primary alert-dismissible" 
+					  	onClick="borrar({{$asunto->id}},{{$puestoSeleccionado->id}})">
+						<button type="button"  class="mClose">&times;</button>
+						<strong>{{$asunto->nombre_asunto}}</strong>
+					  </div>
+					@endforeach
+					
+				</div>
+				
+			</div>
+		</div>
+
+		
 	</div>
+	<div class="mcard card">
+		@if($numAsuntos===0)
+			<div class="alert alert-danger alert-dismissible">
+				  <button type="button" class="close" data-dismiss="alert">&times;</button>
+				  <strong>No hay asuntos</strong> 
+			</div>
+			
+		@else
+			<div class="asuntos-container">
+				@foreach ($asuntos as $asunto)
+				<div id='{{"asunto-drag".$asunto->id}}' class="mAsunto alert alert-primary alert-dismissible" draggable="true" ondragstart="drag(event,{{$asunto->id}})">
+					<button type="button"  class="mClose">&times;</button>
+					<strong>{{$asunto->nombre_asunto}}</strong>
+				</div>
+
+				@endforeach
+			</div>
+			
+		@endif
+
+	</div>
+
 	@else
 		<div class="alert alert-danger alert-dismissible">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>

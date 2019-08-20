@@ -15,11 +15,22 @@ class AsuntosPuestosTable extends Migration
     {
         Schema::create('asunto_puesto', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('asunto_id')->unsigned();
-            $table->integer('puesto_id')->unsigned();
+            $table->unsignedBigInteger('asunto_id');                
+            $table->foreign('asunto_id')
+                  ->references('id')->on('asuntos')
+                  ->onDelete('cascade');
+            $table->unsignedBigInteger('puesto_id');                
+            $table->foreign('puesto_id')
+                  ->references('id')->on('puestos')
+                  ->onDelete('cascade');
+            
+            
             $table->timestamps(); 
         });
     }
+
+     /*$table->integer('asunto_id')->unsigned();
+            $table->integer('puesto_id')->unsigned();*/
 
     /**
      * Reverse the migrations.
