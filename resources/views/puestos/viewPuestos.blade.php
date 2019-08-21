@@ -15,6 +15,7 @@
 
 </script>
 <div class="container">
+	  <h1 class="text-secondary">Ver Puestos</h1>
 	<form class="form-inline" style="float: right;">
         <label for="nombre"></label>
         <input class="form-control" type="text" name="descripcion" placeholder="Buscar por descripcion" />
@@ -29,14 +30,15 @@
             </span>
         </button>
     </form>
-	<table class="table table-striped">
-			<thead>
+	<br><br> 
+	<table class="table  table-striped table-responsive-md mt-3">
+			<thead class="thead-dark">
 				<tr>
 					<th>id</th>
-					<th>Numero</th>
-					<th>descripcion</th>
+					<th>Número</th>
+					<th>Descripción</th>
 					<th>Oficinista</th>
-					
+					<th>Acciones</th>
 				</tr>
 			</thead>
 

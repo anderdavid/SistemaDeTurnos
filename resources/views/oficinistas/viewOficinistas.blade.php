@@ -15,7 +15,7 @@
 	</script>
 	<div class="container">
 
-        <h1 class="text-secondary">Ver Oficinistas</h1><br>
+        <h1 class="text-secondary">Ver Oficinistas</h1>
         <form class="form-inline" style="float: right;">
             <label for="nombre"></label>
             <input class="form-control" type="text" name="nombre" placeholder="Buscar por Nombre" />
@@ -30,17 +30,18 @@
                 </span>
             </button>
         </form>
-		<table class="table table-striped">
-			<thead>
+	<br><br> 
+	<table class="table  table-striped table-responsive-md mt-3">
+			<thead class="thead-dark">
 				<tr>
 					<th>id</th>
 					<th>Nombre</th>
-					<th>Cedula</th>
+					<th>Cédula</th>
 					<th>Cargo</th>
 					<th>Genero</th>
 					<th>Email</th>
 					<th>Password</th>
-					<th>Action</th>
+					<th>Acciones</th>
 				</tr>
 			</thead>
 			<tbody>

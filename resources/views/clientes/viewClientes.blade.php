@@ -2,16 +2,17 @@
 @section('content')
 
 <div class="container">
-	<h1>Ver Clientes</h1>
-
-	<table class="table table-striped">
-		<thead>
+	  <h1 class="text-secondary">Ver Clientes</h1>
+	
+	<br><br> 
+	<table class="table  table-striped table-responsive-md mt-3">
+		<thead class="thead-dark">
 			<tr>
-				<td>id</td> 
-				<td>nombre</td> 
-				<td>cedula</td> 
-				<td>asunto</td> 
-				<td>punto_de_atencion_id</td> 
+				<th>id </th>
+				<th>Nombre </th>
+				<th>Cedula </th>
+				<th>Asunto </th>
+				<th>Punto de Atención</th>
 			
 			</tr>
 		</thead>
