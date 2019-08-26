@@ -33,8 +33,9 @@ class OficinistasController extends Controller
                         ->where('oficinistas.cedula','LIKE',"%$cedula%")
                         ->orderBy('id', 'ASC')
                         ->paginate(5);
-
-        return view('/oficinistas/viewOficinistas',compact('oficinistas'));
+        $numOficinistas = $oficinistas->count();
+        
+        return view('/oficinistas/viewOficinistas',compact('oficinistas'),['numOficinistas'=>$numOficinistas]);
 
 
     }

@@ -34,7 +34,9 @@ class ClienteController extends Controller
        
        $cliente = new Cliente($this->tableClients);
        $clientes = $cliente->get();
-       return view('clientes/viewClientes', ['clientes' =>$clientes]);
+       $numClientes = $clientes->count();
+     
+       return view('clientes/viewClientes', ['clientes' =>$clientes,'numClientes'=>$numClientes]);
     
     }
 

@@ -14,8 +14,7 @@
 
 	</script>
 	<div class="container">
-
-        <h1 class="text-secondary">Ver Oficinistas</h1>
+		<h1 class="text-secondary">Ver Oficinistas</h1>
         <form class="form-inline" style="float: right;">
             <label for="nombre"></label>
             <input class="form-control" type="text" name="nombre" placeholder="Buscar por Nombre" />
@@ -32,6 +31,12 @@
         </form>
 	<br><br> 
 	<table class="table  table-striped table-responsive-md mt-3">
+		@if($numOficinistas==0)
+			<div class="alert alert-danger alert-dismissible mt-3">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<strong>No hay oficinistas</strong> 
+			</div>
+		@else
 			<thead class="thead-dark">
 				<tr>
 					<th>id</th>
@@ -84,6 +89,8 @@
 
 			@endforeach
 		</tbody>
+		@endif
+			
 	</table>
 	{!!$oficinistas->render()!!}
 	</div>

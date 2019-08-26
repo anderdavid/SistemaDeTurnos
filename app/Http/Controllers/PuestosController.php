@@ -45,7 +45,9 @@ class PuestosController extends Controller
                     ->orderBy('id', 'ASC')
                     ->paginate(5);
 
-      return view('/puestos/viewPuestos',compact('puestos'));
+        $numPuestos = $puestos->count();
+
+      return view('/puestos/viewPuestos',compact('puestos'),['numPuestos'=>$numPuestos]);
     }
 
     /**

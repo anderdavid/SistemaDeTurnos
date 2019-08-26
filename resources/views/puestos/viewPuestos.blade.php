@@ -32,6 +32,12 @@
     </form>
 	<br><br> 
 	<table class="table  table-striped table-responsive-md mt-3">
+		@if($numPuestos===0)
+			<div class="alert alert-danger alert-dismissible mt-3">
+			 	<button type="button" class="close" data-dismiss="alert">&times;</button>
+			 	<strong>No hay Puestos</strong> 
+			</div>
+		@else
 			<thead class="thead-dark">
 				<tr>
 					<th>id</th>
@@ -78,6 +84,8 @@
 
 			@endforeach
 		</tbody>
+		@endif
+			
 	</table>
 	{!!$puestos->render()!!}
 </div>
