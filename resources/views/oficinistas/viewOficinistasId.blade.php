@@ -12,7 +12,7 @@
 		function borrar(){
 			location.href = "/oficinistas/destroy/"+idOficinista;
 		}
-	</script>>
+	</script>
 	
 	<div class="container">
 		<h1 class="text-secondary">Ver Oficinista</h1><br>
@@ -27,7 +27,7 @@
 					<p><strong>Nombre: </strong>{{$oficinista->nombre}}</p>
 					<p><strong>Cédula: </strong>{{$oficinista->cedula}}</p>
 					<p><strong>Cargo: </strong>{{$oficinista->cargo}}</p>
-					<p><strong>Genero: </strong>{{$oficinista->genero}}</p>
+					<p><strong>Género: </strong>{{$oficinista->genero}}</p>
 					<p><strong>Oficinista: </strong>{{$oficinista->email}}</p>
 					<p><strong>Password: </strong>{{$oficinista->password}}</p>
 				
@@ -55,7 +55,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
-					¿Esta seguro de eliminar este oficinista?
+					¿Está seguro de eliminar este oficinista?
 				</div>
 				<div class="modal-footer">
 					<div class="row" style="margin-right: 10px">

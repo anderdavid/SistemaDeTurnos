@@ -9,12 +9,12 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="form-group">
-								<label for="numero">numero:</label>
-								<input class="form-control" type="text" name="numero" placeholder="Ingrese numero de puesto" required="true" value="{{$puesto->numero}}">
+								<label for="numero">Número:</label>
+								<input class="form-control" type="text" name="numero" placeholder="Ingrese número de puesto" required="true" value="{{$puesto->numero}}">
 							</div>
 							<div class="form-group">
-								<label for="descripcion">descripcion:</label>
-								<input class="form-control" type="text" name="descripcion" placeholder="Ingrese descripcion de puesto" required="true" value="{{$puesto->descripcion}}">
+								<label for="descripcion">Descripción:</label>
+								<input class="form-control" type="text" name="descripcion" placeholder="IIngrese descripción de puesto" required="true" value="{{$puesto->descripcion}}">
 							</div>
 							<div class="form-group">
 								<input class="btn btn-primary" type="submit" name="Actualizar" value="Actualizar">

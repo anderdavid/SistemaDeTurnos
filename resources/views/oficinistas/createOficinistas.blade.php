@@ -16,14 +16,15 @@
 								<input class="form-control" type="text" name="nombre" placeholder="Ingrese nombre de oficinista" required="true">
 							</div>
 							<div class="form-group">
-								<label for="cedula">Cedula:</label>
-								<input class="form-control" type="number" name="cedula" placeholder="Ingrese cedula de oficinista" required="true">
+								<label for="cedula">Cédula:</label>
+								<input class="form-control" type="number" name="cedula" placeholder="Ingrese cédula de oficinista" required="true">
 							</div>
 							<div class="form-group">
 								<label for="cargo">Cargo:</label>
 								<input class="form-control" type="text" name="cargo" placeholder="Ingrese Cargo de oficinista" required="true">
 							</div>
 							<div class="form-group">
+								<label>Género:</label><br>
 								<label class="radio-inline"><input type="radio" name="genero" value="Masculino" checked>Masculino</label>
 								<label class="radio-inline"><input type="radio" name="genero" value="Femenino">Femenino</label>
 								</div>
@@ -36,7 +37,7 @@
 								<input class="form-control" type="password" name="password" placeholder="Ingrese password" required="true">
 							</div>
 							<div class="form-group">
-								<input class="btn btn-primary" type="submit" name="registrar" value="registrar">
+								<input class="btn btn-primary" type="submit" name="registrar" value="Registrar">
 							</div>
 						</div>
 					</div>

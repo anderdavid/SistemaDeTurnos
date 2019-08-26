@@ -20,7 +20,7 @@
             <label for="nombre"></label>
             <input class="form-control" type="text" name="nombre" placeholder="Buscar por Nombre" />
             <label for="empresa" style="margin-left: 5px"></label>
-            <input class="form-control" type="text" name="cedula" placeholder="Buscar por Cedula"/>
+            <input class="form-control" type="text" name="cedula" placeholder="Buscar por Buscar por Cédula"/>
 
             <button type="submit" class="btn btn-info" style="margin-left: 5px">
                 <span style="color:#fff">
@@ -96,7 +96,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
-					¿Esta seguro de eliminar este oficinista?
+					¿Está seguro de eliminar este oficinista?
 				</div>
 				<div class="modal-footer">
 					<div class="row" style="margin-right: 10px">

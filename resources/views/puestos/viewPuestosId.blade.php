@@ -13,17 +13,17 @@
 		}
 	</script>
 	<div class="container">
-		<h1 class="text-secondary">Ver Oficinista</h1><br>
+		<h1 class="text-secondary">Ver Puesto </h1><br>
 		<div class="row justify-content-center">
 			<div class="col-md-10">
 				<div class="card">
 					<div class="card-header bg-secondary text-white">
-					OFICINISTA
+					PUESTO
 				</div>
 				<div class="card-body">
 					<p><strong>Id: </strong>{{$puesto->id}}</p>
-					<p><strong>Numero: </strong>{{$puesto->numero}}</p>
-					<p><strong>descripcion: </strong>{{$puesto->descripcion}}</p>
+					<p><strong>Número: </strong>{{$puesto->numero}}</p>
+					<p><strong>Descripción: </strong>{{$puesto->descripcion}}</p>
 					 <p><strong>Oficinista: </strong>{{$oficinista}}</p>
 				</div>
 			</div>
@@ -49,7 +49,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
-					¿Esta seguro de eliminar este puesto?
+					¿Está seguro de eliminar este puesto?
 				</div>
 				<div class="modal-footer">
 					<div class="row" style="margin-right: 10px">

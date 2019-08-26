@@ -18,7 +18,7 @@
 	  <h1 class="text-secondary">Ver Puestos</h1>
 	<form class="form-inline" style="float: right;">
         <label for="nombre"></label>
-        <input class="form-control" type="text" name="descripcion" placeholder="Buscar por descripcion" />
+        <input class="form-control" type="text" name="descripcion" placeholder="Buscar por descripción " />
         <label for="empresa" style="margin-left: 5px"></label>
         <input class="form-control" type="text" name="oficinista" placeholder="Buscar por Oficinista"/>
 
@@ -89,7 +89,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
-					¿Esta seguro de eliminar este puesto?
+					¿Está seguro de eliminar este puesto?
 				</div>
 				<div class="modal-footer">
 					<div class="row" style="margin-right: 10px">

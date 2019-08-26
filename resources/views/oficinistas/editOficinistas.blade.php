@@ -14,14 +14,15 @@
 								<input class="form-control" type="text" name="nombre" placeholder="Ingrese nombre de oficinista" value="{{$oficinista->nombre}}" required="true">
 							</div>
 							<div class="form-group">
-								<label for="cedula">Cedula:</label>
-								<input class="form-control" type="number" name="cedula" placeholder="Ingrese cedula de oficinista" value="{{$oficinista->cedula}}" required="true">
+								<label for="cedula">Cédula:</label>
+								<input class="form-control" type="number" name="cedula" placeholder="Ingrese cédula de oficinista" value="{{$oficinista->cedula}}" required="true">
 							</div>
 							<div class="form-group">
 								<label for="cargo">Cargo:</label>
 								<input class="form-control" type="text" name="cargo" placeholder="Ingrese Cargo de oficinista" value="{{$oficinista->cargo}}" required="true">
 							</div>
 							<div class="form-group">
+								<label>Género:</label><br>
 								<label class="radio-inline"><input type="radio" name="genero" value="Masculino" {{$masculino_checkbox}}>Masculino</label>
 								<label class="radio-inline"><input type="radio" name="genero" value="Femenino" {{$femenino_checkbox}}>Femenino</label>
 							</div>
@@ -31,7 +32,7 @@
 							</div>
 							<div class="form-group">
 								<label for="password">Password:</label>
-								<input class="form-control" type="password" name="password" placeholder="Ingrese cedula de oficinista" value="{{$oficinista->password}}" required="true">
+								<input class="form-control" type="password" name="password" placeholder="Ingrese password de oficinista" value="{{$oficinista->password}}" required="true">
 							</div>
 							<div class="form-group">
 								<input class="btn btn-success" type="submit" name="registrar" value="Actualizar">
