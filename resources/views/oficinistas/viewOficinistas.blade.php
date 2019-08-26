@@ -19,7 +19,7 @@
             <label for="nombre"></label>
             <input class="form-control" type="text" name="nombre" placeholder="Buscar por Nombre" />
             <label for="empresa" style="margin-left: 5px"></label>
-            <input class="form-control" type="text" name="cedula" placeholder="Buscar por Buscar por Cédula"/>
+            <input class="form-control" type="text" name="cedula" placeholder="Buscar por Cédula"/>
 
             <button type="submit" class="btn btn-info" style="margin-left: 5px">
                 <span style="color:#fff">
