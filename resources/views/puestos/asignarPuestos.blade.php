@@ -59,12 +59,18 @@
 
     <div id='{{"oficinista".$oficinista->id}}' class="card drag-container" draggable="true" ondragstart="drag(event,{{$oficinista->id}})" >
    
-    @if($oficinista->genero =="Masculino")
-      <div class="oficinista-img-male"></div>
-    @else
-      <div class="oficinista-img-female"></div>
-    @endif
-      <h3 id="oficicinsta-title">{{$oficinista->nombre}}</h3> 
+        @if($oficinista->genero =="Masculino")
+          <div class="oficinista-img-male"></div>
+        @else
+          <div class="oficinista-img-female"></div>
+        @endif
+        @if(strlen($oficinista->nombre)>20)
+            <h3 id="oficicinsta-title">{{substr($oficinista->nombre, 0, 20)}}....</h3>
+
+        @else
+            <h3 id="oficicinsta-title">{{$oficinista->nombre}}</h3>
+        @endif
+     
     </div>
 
   @endforeach
@@ -89,7 +95,14 @@
                     <div class="oficinista-img-female"></div>
                   @endif
           
-            <h3 id="oficicinsta-title">{{$puesto->oficinista}}</h3> 
+           <!--  <h3 id="oficicinsta-title">{{$puesto->oficinista}}</h3>  -->
+           @if(strlen($puesto->oficinista)>20)
+            <h3 id="oficicinsta-title">{{substr($puesto->oficinista, 0, 20)}}....</h3>
+
+           @else
+            <h3 id="oficicinsta-title">{{$puesto->oficinista}}</h3>
+           @endif
+          
           </div>
         @endif
 

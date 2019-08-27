@@ -53,7 +53,7 @@ th{
 
 .mcard{
  margin-top:50px;
- padding: 30px;
+ padding: 10px;
 
 }
 
@@ -77,6 +77,20 @@ th{
 }
 .mAsunto strong{
   margin-right: 5px;  
+}
+
+#asuntos-drop{
+  min-height: 40px;
+}
+
+#asuntos-asignados h4,#asuntos-para-asignar h4{
+  font-size: 18px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #F86617;
+  margin-left: 5px;
+  margin-top: 0px;
 }
 
 

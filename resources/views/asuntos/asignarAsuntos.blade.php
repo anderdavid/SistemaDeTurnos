@@ -59,57 +59,85 @@
 
 <div class="container">
 	
-	<h2>Asignar Asuntos</h2>
+	<h2 class="text-secondary">Asignar Asuntos</h2>
 
 	@if($data)
 	<div class="row">
-		<div class="form-group col-md-2">
+		<div class="form-group col-md-3">
 			<form>
 				<label for="puestos">Puestos:</label>
 				<select id="puestos" name="idPuesto" class="form-control" onchange="selectPuesto(this)">
 
 					@foreach ($puestos as $puesto)
 					@if ($puesto->id == $puestoSeleccionadoId)
-					<option value="{{$puesto->id}}" selected="true">Puesto {{$puesto->numero}}</option>
+					<option value="{{$puesto->id}}" selected="true">Puesto {{$puesto->numero}} ({{$puesto->descripcion}})</option>
 					@else
-					<option value="{{$puesto->id}}">Puesto {{$puesto->numero}}</option>
+					<option value="{{$puesto->id}}">Puesto {{$puesto->numero}} ({{$puesto->descripcion}})</option>
 					@endif
 					@endforeach
 				</select>
 			</form>
 		</div>
-		<div class="col-md-2">
+		<div class="col-md-1">
 			
 		</div>
-		<div class="col-md-8 card">
-			<div class="card drop-container">
-				<h3 id="puesto-title">Puesto {{$puestoSeleccionado->numero}}</h3>
-				<div class="puesto-img">
-			 		@if ($puestoSeleccionado->oficinista !=null)
-			 		<div id="drag1" class="card drag-container">
+		<div class="col-md-8 card"> 
+			<div class="puesto-container row">
+				<div class="drop-container cardmd-4">
+					<h3 id="puesto-title">Puesto {{$puestoSeleccionado->numero}}</h3>
 
-			 			@if($puestoSeleccionado->oficinistaGenero =="Masculino")
-			 			<div class="oficinista-img-male"></div>
-			 			@else
-			 			<div class="oficinista-img-female"></div>
-			 			@endif
+					<div class="puesto-img">
+						@if ($puestoSeleccionado->oficinista !=null)
+						<div id="drag1" class="card drag-container">
 
-			 			<h3 id="oficicinsta-title">{{$puestoSeleccionado->oficinista}}</h3> 
-			 		</div>
-			 		@endif
+							@if($puestoSeleccionado->oficinistaGenero =="Masculino")
+							<div class="oficinista-img-male"></div>
+							@else
+							<div class="oficinista-img-female"></div>
+							@endif
 
-			 	</div> 
+							@if(strlen($puestoSeleccionado->oficinista)>20)
+					            <h3 id="oficicinsta-title">{{substr($puestoSeleccionado->oficinista, 0, 20)}}....</h3>
+							@else
+				            	<h3 id="oficicinsta-title">{{$puestoSeleccionado->oficinista}}</h3>
+				           @endif 
+						</div>
+						@endif
+
+					</div> 
+				</div>
+				<div class="description-puesto infor md-8">
+					
+						<div>
+							<p><strong>Número: </strong>{{$puestoSeleccionado->numero}}</p>
+							<p><strong>Descripción: </strong>{{$puestoSeleccionado->descripcion}}</p>
+							<p><strong>Oficinista: </strong>{{$puestoSeleccionado->oficinista}}</p>
+						</div>
+					
+					<!-- <h3>{{$puestoSeleccionado->descripcion}}</h3> -->
+				</div>
 			</div>
+			
 
-			<div class="mcard card">
-				<div id="asuntos-drop" class="asuntos-container" ondrop="drop(event,{{$puestoSeleccionado->id}})" ondragover="allowDrop(event)">
-					@foreach ($puestoAsuntos->asuntos as $asunto)
-					  <div class="mAsunto alert alert-primary alert-dismissible" 
-					  	onClick="borrar({{$asunto->id}},{{$puestoSeleccionado->id}})">
-						<button type="button"  class="mClose">&times;</button>
-						<strong>{{$asunto->nombre_asunto}}</strong>
-					  </div>
-					@endforeach
+			<div class="mcard card mb-3">
+				<div id="asuntos-asignados">
+					<h4>Asuntos Asignados:</h4>
+				</div>
+				<div id="asuntos-drop"  class="asuntos-container" ondrop="drop(event,{{$puestoSeleccionado->id}})" ondragover="allowDrop(event)">
+					@if($numAsuntosAsignados===0)
+						<div class="alert alert-danger alert-dismissible">
+				  			<button type="button" class="close" data-dismiss="alert">&times;</button>
+				  			<strong>No hay asuntos asignados</strong> 
+						</div>
+					@else
+						@foreach ($puestoAsuntos->asuntos as $asunto)
+						  <div class="mAsunto alert alert-primary alert-dismissible" 
+						  	onClick="borrar({{$asunto->id}},{{$puestoSeleccionado->id}})">
+							<button type="button"  class="mClose">&times;</button>
+							<strong>{{$asunto->nombre_asunto}}</strong>
+						  </div>
+						@endforeach
+					@endif
 					
 				</div>
 				
@@ -119,6 +147,9 @@
 		
 	</div>
 	<div class="mcard card">
+		<div id="asuntos-para-asignar">
+			<h4>Asuntos:</h4>
+		</div>
 		@if($numAsuntos===0)
 			<div class="alert alert-danger alert-dismissible">
 				  <button type="button" class="close" data-dismiss="alert">&times;</button>

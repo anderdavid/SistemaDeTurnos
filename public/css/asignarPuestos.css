@@ -8,10 +8,13 @@
 
 .drag-container{
     background-color: #fff;
-	width: 100px;
-	height: 130px;
+	width: 105px;
+	height: 145px;
+	margin-right: 10px;
 	display: inline-block;
 	border-radius: 10px;
+	white-space: normal;
+	overflow: hidden;
 }
 
 .oficinista-img-male{
@@ -44,10 +47,9 @@
 	grid-template-columns: auto auto auto auto auto auto;
 }
 .drop-container{
-	width: 120px;
-	/* height: 120px */
-	/* padding:10px; */
+	width: 130px;
 	margin: 20px;
+	
 }
 
 #puesto-title{
@@ -62,12 +64,35 @@
 
 .puesto-img{
 	margin: 10px;
-	width: 100px;
-	height: 130px;
+	width: 105px;
+	height: 145px;
 	background-color: #fff;
 	background-image: url("../img/puesto.png");
 	background-size: cover;
 	border-radius: 10px;
+
+}
+
+.infor:before{
+	height: 40px;
+}
+.infor{
+	visibility: hidden;
+	margin-top: 20px;
+	margin-left: -10px;
+	margin-bottom: 100px;
+	background-color: var(--success);
+	color: #fff;
+	border-radius: 6px;
+	font-size: 14px;
+	padding: 20px 20px;
+	position: relative;
+	height: auto;
+	z-index: 1;
+}
+
+.drop-container:hover ~.infor{
+	visibility: visible;
 
 }
 

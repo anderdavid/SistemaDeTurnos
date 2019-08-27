@@ -110,6 +110,7 @@ class AsuntosController extends Controller
                     ->first();
              $puestoAsuntos = \App\Puesto::find($idPuesto);
 
+
     
 
             if($puestoSeleccionado==null){
@@ -121,7 +122,10 @@ class AsuntosController extends Controller
                         ->orderBy('numero', 'ASC')
                         ->first();
                 $puestoAsuntos = \App\Puesto::find($puestoSeleccionadoTemp->id);
-            } 
+               
+            }
+             $numAsuntosAsignados = $puestoAsuntos->asuntos->count();
+
             
 
             return view('/asuntos/asignarAsuntos',[
@@ -131,6 +135,7 @@ class AsuntosController extends Controller
                         'asuntos'=> $asuntos,
                         'puestoAsuntos'=>$puestoAsuntos,
                         'numAsuntos'=>$numAsuntos,
+                        'numAsuntosAsignados'=>$numAsuntosAsignados,
                         'data'=>true
                         ]); 
         }
