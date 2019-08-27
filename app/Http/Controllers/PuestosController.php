@@ -174,6 +174,8 @@ class PuestosController extends Controller
                     ->orderBy('numero', 'ASC')
                     ->get();
 
+        $numPuestos =$puestos->count();
+
         
         $oficinistas = DB::table('oficinistas')
                         ->leftJoin('puestos', 'puestos.oficinista_id', '=', 'oficinistas.id')
@@ -181,9 +183,19 @@ class PuestosController extends Controller
                         ->whereNull('puestos.numero')
                         ->get();
 
+        $numOficinistas =$oficinistas->count();
+
+       /* echo $numPuestos."<br>".$numOficinistas;*/
 
 
-        return view('/puestos/asignarPuestos',['oficinistas'=>$oficinistas,'puestos'=>$puestos]);
+
+
+        return view('/puestos/asignarPuestos',[
+                    'oficinistas'=>$oficinistas,
+                    'puestos'=>$puestos,
+                    'numOficinistas'=>$numOficinistas,
+                    'numPuestos'=>$numPuestos
+                    ]);
     }
 
     public function asignarPuestosUpdate(Request $request){
