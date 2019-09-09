@@ -17,6 +17,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('hello','ApiRestController@index');
+#API REST TURNERA
+Route::any('autenticacion','ApiRestController@autenticacion');
+Route::any('asuntos','ApiRestController@viewAsuntos');
+Route::any('turnos','ApiRestController@takeTurno');
+Route::any('oficinista/autenticacion','ApiRestController@autenticarOficinista');
+Route::any('turnos/puesto/{ipPuesto}','ApiRestController@getTurnosByPuesto');
+Route::any('turnos/operacion','ApiRestController@getTurnosInOperation');
+Route::any('turnos/atender/{idTurno}','ApiRestController@atenderTurno');
+Route::any('turnos/noAtender/{idTurno}','ApiRestController@noAtenderTurno');
+Route::any('turnos/back/{idTurno}','ApiRestController@back');
 
 
