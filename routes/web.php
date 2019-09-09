@@ -78,4 +78,7 @@ Route::get('/clientes/createTableSchema', 'clienteController@createTableSchema')
 
 
 
+
+
+
 	
