@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use \App\PuntoDeAtencion;
 use \App\User;
 use \App\Role;
+use \App\Asunto;
 
 class ApiRestController extends Controller
 {
@@ -41,32 +42,42 @@ class ApiRestController extends Controller
 		echo json_encode($response);
 	}
 
+	public function viewAsuntos(Request $request){
+		$asuntos = Asunto::where('punto_de_atencion_id',$request->puntoAtencionId)->get();
 
-	public function viewAsuntos(){
-		echo "hello wolrd viewAsuntos";
+		if($asuntos->count()==0){
+			$response['status']=false;
+			$response['msg']="No hay asuntos para atender";
+		}else{
+			$response['status']=true;
+			$response['asuntos']=$asuntos;
+		}
+
+		echo json_encode($response);
+
 	}
-	public function takeTurno(){
+	public function takeTurno(Request $request){
 		echo "hello wolrd takeTurno";
 	}
-	public function autenticarOficinista(){
+	public function autenticarOficinista(Request $request){
 		echo "hello wolrd autenticarOficinista";
 	}
-	public function getTurnosByPuesto($idPuesto){
+	public function getTurnosByPuesto(Request $request,$idPuesto){
 		echo "hello wolrd getTurnosByPuesto "."<br>";
 		echo "idPuesto: ".$idPuesto;
 	}
-	public function getTurnosInOperation(){
+	public function getTurnosInOperation(Request $request){
 		echo "hello wolrd getTurnosInOperation";
 	}
-	public function atenderTurno($idTurno){
+	public function atenderTurno(Request $request,$idTurno){
 		echo "hello wolrd atenderTurno"."<br>";
 		echo $idTurno;
 	}
-	public function noAtenderTurno($idTurno){
+	public function noAtenderTurno(Request $request,$idTurno){
 		echo "hello wolrd no atenderTurno"."<br>";
 		echo $idTurno;
 	}
-	public function back($idTurno){
+	public function back(Request $request,$idTurno){
 		echo "hello wolrd back"."<br>";
 		echo $idTurno;
 	}
