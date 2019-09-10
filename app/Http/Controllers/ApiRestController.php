@@ -4,12 +4,44 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
+
+use \App\PuntoDeAtencion;
+use \App\User;
+use \App\Role;
 
 class ApiRestController extends Controller
 {
-	public function autenticacion(){
-		echo "hello wolrd autenticacion";
+	public function autenticacion(Request $request){
+	
+		$user =User::where('email',$request->email)->first();
+
+		if($user==null){
+			$response['status']=false;
+			$response['msg']="Error de autenticación";
+		}else{
+			$hash =Hash::check($request->password,$user->password, []);
+
+			if($hash!="1"){
+
+				$response['status']=false;
+				$response['msg']="Error de autenticación";
+			}else{
+				$puntoAtencion = User::find($user->id)->puntoDeAtencion;
+				$puntoDeAtencionId=$puntoAtencion->id;
+
+				$response['status']=true;
+				$response['PuntoDeAtencionId']=$puntoDeAtencionId;
+				
+			}
+		}
+
+		echo json_encode($response);
 	}
+
+
 	public function viewAsuntos(){
 		echo "hello wolrd viewAsuntos";
 	}
@@ -29,7 +61,6 @@ class ApiRestController extends Controller
 	public function atenderTurno($idTurno){
 		echo "hello wolrd atenderTurno"."<br>";
 		echo $idTurno;
-
 	}
 	public function noAtenderTurno($idTurno){
 		echo "hello wolrd no atenderTurno"."<br>";
@@ -42,15 +73,8 @@ class ApiRestController extends Controller
 }
 
 
-/*192.168.1.142/api/autenticacion
-192.168.1.142:8000/api/asuntos
-192.168.1.142:8000/api/turnos
-192.168.1.142:8000/api/oficinista/autenticacion
-192.168.1.142:8000/api/turnos/puesto/1
-192.168.1.142:8000/api/turnos/operacion
-192.168.1.142:8000/api/turnos/atender
-192.168.1.142:8000/api/turnos/noAtender
-192.168.1.142:8000/api/turnos/back*/
+
+
 
 
 
