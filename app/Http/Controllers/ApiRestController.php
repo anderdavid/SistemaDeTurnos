@@ -12,6 +12,8 @@ use \App\PuntoDeAtencion;
 use \App\User;
 use \App\Role;
 use \App\Asunto;
+use \App\Puesto;
+use \App\Oficinista;
 
 class ApiRestController extends Controller
 {
@@ -43,21 +45,75 @@ class ApiRestController extends Controller
 	}
 
 	public function viewAsuntos(Request $request){
-		$asuntos = Asunto::where('punto_de_atencion_id',$request->puntoAtencionId)->get();
 
-		if($asuntos->count()==0){
-			$response['status']=false;
-			$response['msg']="No hay asuntos para atender";
-		}else{
-			$response['status']=true;
-			$response['asuntos']=$asuntos;
+		$puntoDeAtencion =PuntoDeAtencion::where('id',$request->puntoAtencionId)->get();
+
+		if($puntoDeAtencion->count()==0){
+			$response['status'] =false;
+			$response['msg']="Punto de atención no  encontrado";
+		}
+		else{
+			$asuntos = Asunto::where('punto_de_atencion_id',$request->puntoAtencionId)->get();
+
+			if($asuntos->count()==0){
+				$response['status']=false;
+				$response['msg']="No hay asuntos para atender";
+			}else{
+				$response['status']=true;
+				$response['asuntos']=$asuntos;
+			}
+		}
+
+		echo json_encode($response);
+		
+	}
+
+	public function takeTurno(Request $request){
+
+		$parametros["puntoAtencionId"]=$request->puntoAtencionId;
+		$parametros["cedula_cliente"]=$request->cedula_cliente;
+		$parametros["asunto"]=$request->asunto;
+		$parametros["nombre_cliente"]=$request->nombre_cliente;
+
+		// echo json_encode($parametros);
+
+		$puntoAtencion = PuntoDeAtencion::where('id',$request->puntoAtencionId)->get();
+
+		$asunto =Asunto::where('punto_de_atencion_id',$request->puntoAtencionId)->where('nombre_asunto',$request->asunto)->get();
+
+		$puestos = Puesto::where('punto_de_atencion_id',$request->puntoAtencionId)->get();
+
+		$oficinistas = Oficinista::where('punto_de_atencion_id',$request->puntoAtencionId)->get();
+
+		// echo json_encode($puestos);
+
+		// echo json_encode($asunto);
+
+
+		// echo json_encode($puntoAtencion);
+
+		if($puntoAtencion->count()==0){
+			$response['status'] =false;
+			$response['msg']="Punto de atención no  encontrado";
+		}else if($asunto->count()==0){
+			$response['status'] =false;
+			$response['msg']="Asunto no existente";
+		}else if($puestos->count()==0){
+			$response['status'] =false;
+			$response['msg']="No hay puestos creados";
+		}else if($oficinistas->count()==0){
+			$response['status'] =false;
+			$response['msg']="No hay oficinistas creados";
+		}
+		else{
+			$response['algo']="algo";
 		}
 
 		echo json_encode($response);
 
-	}
-	public function takeTurno(Request $request){
-		echo "hello wolrd takeTurno";
+
+
+
 	}
 	public function autenticarOficinista(Request $request){
 		echo "hello wolrd autenticarOficinista";

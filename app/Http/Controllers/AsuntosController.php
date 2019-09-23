@@ -87,6 +87,7 @@ class AsuntosController extends Controller
         $pId =$request->session()->get('puntoAtencionId');
 
         $puestos = DB::table('puestos')
+                    ->where('puestos.punto_de_atencion_id',"=", $pId)
                     ->leftjoin('oficinistas', 'puestos.oficinista_id', '=', 'oficinistas.id')
                     ->select('puestos.*', 'oficinistas.id as oficinistaId','oficinistas.nombre as oficinista','oficinistas.genero as oficinistaGenero')
                     ->orderBy('numero', 'ASC')
@@ -114,7 +115,7 @@ class AsuntosController extends Controller
     
 
             if($puestoSeleccionado==null){
-                $puestoSeleccionadoTemp = DB::table('puestos')->first();
+                $puestoSeleccionadoTemp=Puesto::where('punto_de_atencion_id', $pId)->first();
                 $puestoSeleccionado= DB::table('puestos')
                         ->leftjoin('oficinistas', 'puestos.oficinista_id', '=', 'oficinistas.id')
                         ->select('puestos.*', 'oficinistas.id as oficinistaId','oficinistas.nombre as oficinista','oficinistas.genero as oficinistaGenero')
