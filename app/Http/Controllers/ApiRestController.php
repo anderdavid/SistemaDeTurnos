@@ -14,6 +14,8 @@ use \App\Role;
 use \App\Asunto;
 use \App\Puesto;
 use \App\Oficinista;
+use \App\Cliente;
+
 
 class ApiRestController extends Controller
 {
@@ -159,13 +161,37 @@ class ApiRestController extends Controller
 			$response['parametros'] =$parametros;
 		}
 		else{
-			$response['algo']="algo";
+
+			$response['algo']="crear cliente";
+
+			$cliente = new Cliente("clientes".$request->puntoAtencionId);
+		
+			$cliente->nombre =$request->nombre_cliente;
+			$cliente->cedula=$request->cedula_cliente;
+			$cliente->asunto = Asunto::find($request->asunto)->nombre_asunto;
+			$cliente->punto_de_atencion_id =$request->puntoAtencionId;
+			$cliente->save();
+
+
+			/* $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->string('cedula');
+            $table->string('asunto');
+            
+            $table->unsignedBigInteger('punto_de_atencion_id');  */
+
+			/* $asunto = new Asunto();
+			            $asunto->nombre_asunto=$request->asunto;
+			            $asunto->punto_de_atencion_id= $pId;
+			            $asunto->save();*/
+
+			/*
 			$response['parametros'] =$parametros;
 
 			$asuntosPuestoAsignado =Asunto::find($request->asunto)->puestos;
 			$response['puestosAsignados']=$asuntosPuestoAsignado;
 
-			$response['oficinistasAsingnados']=$oficinistasAsignados;
+			$response['oficinistasAsingnados']=$oficinistasAsignados;*/
 		}
 
 		echo json_encode($response);
